@@ -1,0 +1,38 @@
+extends user_index
+
+block user-list
+
+  script.
+    $(document).ready(function () {
+      $('#user_nome').focus();
+    });
+
+  h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
+  hr
+
+  form( method='POST' action='' )
+    input.form-control(type='hidden',name='_csrf', value=csrfToken )
+    table.table.table-sm
+      tr
+        td
+          input#user_nome.form-control( name='user_nome', type='text', placeholder='Nome', required='true', value=(undefined===user ? '' : user.nome) )
+      tr
+        td
+          input#user_email.form-control( name='user_email', type='text', placeholder='E-mail', required='true', value=(undefined===user ? '' : user.email) )
+      tr
+        td
+          input#user_senha.form-control( name='user_senha', type='text', placeholder='Senha', required='true', value=(undefined===user ? '' : user.senha) )
+      tr
+        td
+          select#user_status.form-control( name='user_status', required='true')
+            option(default) #{ undefined===user ? 'Selecione um status' : user.status }
+            option(value='master') master
+            option(value='slave') slave
+    hr
+    button.btn.btn-primary.btn-sm.bshadow( type='submit' ) Salvar
+    a.btn.btn-primary.btn-sm.ml-3.bshadow( type='button', href='javascript:history.back();' ) Cancelar
+
+    if errors 
+        ul
+        for error in errors
+            li!= error.msg

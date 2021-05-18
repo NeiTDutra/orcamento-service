@@ -1,0 +1,67 @@
+doctype html
+html(lang="pt-br")
+  head
+    title=" Serviços - orçamentos"
+    meta( charset="UTF-8" )
+    meta( name="viewport", 
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" )
+    script( src="https://code.jquery.com/jquery-3.5.1.slim.min.js",
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", 
+            crossorigin="anonymous" )
+    script( src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js", 
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN", 
+            crossorigin="anonymous" )
+    script( src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", 
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", 
+            crossorigin="anonymous" ) 
+    script( src="https://kit.fontawesome.com/fcd3489b95.js" 
+            crossorigin="anonymous" )
+    script( type="text/javascript", 
+            src="/javascripts/tbl_script.js" )
+    link( rel="stylesheet", 
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", 
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z", 
+          crossorigin="anonymous" )
+    link( rel="stylesheet", 
+          href="/stylesheets/main.css", 
+          media="screen" ) 
+    link( rel="stylesheet", 
+          href="/stylesheets/mediaprint.css", 
+          media="print" )
+    link( rel="icon", 
+          type="image/png", 
+          href="/images/iconN.png" )
+
+  body.mt-0.pt-0
+    div#container.container-fluid.mt-0.pt-0
+    
+      <!--START ALERT LOGOUT MODAL-->
+      include alert_logout_modal.pug
+      
+      <!--START LOGIN MODAL-->
+      include login_modal.pug
+
+      <!--START SEARCH MODAL BY NAME-->
+      include search_by_name_modal.pug
+      
+      <!--START SEARCH MODAL BY SITUATION-->
+      include search_by_situation_modal.pug
+      
+      <!--START SEARCH MODAL BY DATE-->
+      include search_by_date_modal.pug
+      
+      <!--START HEADER-->
+      include header.pug
+      
+      hr
+      div.row.pdg-top.pb-1.h-100
+
+        <!--START MENU LEFT-->
+        include menu_left.pug
+        
+        <!--START ALL CONTENT-->
+        block content
+
+  <!--START FOOTER-->
+  include footer.pug
+  

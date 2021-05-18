@@ -1,0 +1,36 @@
+extends user_index
+
+block user-list
+
+    script.
+        $(document).ready(function(){
+        $('table tr').click(function(){
+            window.location = $(this).data('url');
+            return false;
+            });
+        });
+
+    h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
+    hr
+
+    table.table
+            thead.thead-dark
+                tr
+                    th(scope="col") Nome
+                    th(scope="col") Email
+                    th(scope="col") Status
+
+            tbody
+                each usuario in user
+                    tr(data-url=usuario.url, style="cursor:pointer", onmouseover="this.style.background='grey'", onmouseout="this.style.background='none'")
+                        
+                        td #{ usuario.nome }
+                        td #{ usuario.email }
+                        td #{ usuario.status }
+
+                else
+                    ul.list-unstyled.ml-3
+
+                        li There are no user.
+
+    

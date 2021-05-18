@@ -1,0 +1,13 @@
+div.modal.fade#alertLogoutModal( role="dialog" )
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                spam
+                h4.modal-title #[strong Alerta de logout]
+            div.modal-body
+                p Você está saindo da edição, para voltar terá de fazer login novamente.
+                p Quer realmente sair?
+                hr
+                a.btn.btn-secondary.btn-sm.bshadow( type="button", href="/users/userlogout" ) Sair
+            div.modal-footer
+                button.btn.btn-primary.btn-sm.bshadow( type="button", data-dismiss="modal" ) Voltar

@@ -1,0 +1,35 @@
+
+button.btn.btn-sm.btn-primary.bshadow( type="button",
+                                       data-toggle="modal", 
+                                       data-target="#searchModal", 
+                                       data-backdrop="static", 
+                                       onMouseUp='this.blur(); return false;' ) 
+    | #[strong Pesquisar por nome]
+
+button.btn.btn-sm.btn-primary.ml-3.bshadow( type="button",
+                                            data-toggle="modal", 
+                                            data-target="#searchModalSit", 
+                                            data-backdrop="static", 
+                                            onMouseUp='this.blur(); return false;' ) 
+    | #[strong Pesquisar por situação] 
+
+button.btn.btn-sm.btn-primary.ml-3.bshadow( type="button",
+                                            data-toggle="modal", 
+                                            data-target="#searchModalDate", 
+                                            data-backdrop="static", 
+                                            onMouseUp='this.blur(); return false;' ) 
+    | #[strong Pesquisar por data] 
+
+a.btn.btn-sm.btn-primary.ml-3.bshadow( href='/orcamentos/orcamentos', 
+                                       onMouseUp='this.blur();' ) 
+    | #[strong Todos orçamentos]
+
+- if((loged && loged.status==='master') || (loged && loged.status==='slave')){
+    a.btn.btn-sm.btn-primary.ml-3.bshadow( href='/orcamentos/orcamento/create', 
+                                           onMouseUp='this.blur();' ) 
+        | #[strong Novo orçamento]
+- }
+a.btn.btn-primary.btn-sm.ml-3.bshadow( href='/orcamentos' ) 
+    | #[strong Estatísticas]
+
+hr

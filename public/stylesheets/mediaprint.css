@@ -1,0 +1,42 @@
+body {
+  background-color: white;
+}
+.noprint {
+  visibility: hidden !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: grey !important;
+}
+input {
+  overflow: hidden;
+  border: none;
+  width: 100%;
+}
+#tbl_head_print {
+  width: 70%;
+}
+textarea {
+  font-size: 1rem;
+  text-indent: 3rem;
+  resize: none;
+  overflow: hidden;
+  width: 100%;
+}
+html {
+  font-size: 1rem;
+}
+button  {
+  visibility: hidden !important;
+}
+.w-60 {
+  width: 60%;
+}
+.w-10 {
+  width: 10%;
+}
+.w-20 {
+  width: 20%;
+}
+.w-40 {
+  width: 40%;
+}

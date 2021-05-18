@@ -1,0 +1,32 @@
+div.position-fixed.wdf-94.mt-0.pt-0
+    div.row.pb-3.pt-3.bg-dark.bshadow.mt-0 
+        div.col-sm-2.text-right
+            h1.t-shadow-black #[strong.text-primary N] Serviços 
+        div.col-sm-4.text-right.pt-2
+            h2.t-shadow-black Gerenciador de orçamentos 
+        div.col-sm-2.text-left.pt-4
+            p.t-shadow-black.text-secondary V.- 1.0
+        - if(mod==='open'){
+            script.
+                $('#loginModal').modal('show');
+                $('#loginModal').on('shown.bs.modal', function (e) {
+                e.preventDefault();
+                $('#user_name').focus();
+                })
+                $('#loginModal').on('hidden.bs.modal', function (e) {
+                e.preventDefault();
+                $(this).removeData('bs.modal');
+                });
+        - }
+        - if(loged){ 
+            div.col-sm-2.bg-secondary.text-center.pt-3.bshadow-black
+                i User: #[strong.text-white #{loged.nome}] 
+            div.col-sm-1.bg-secondary.text-center.pt-3.bshadow-black
+                a.btn.btn-primary.btn-sm.bshadow-black( type='button', href='/users/userlogout' ) Logout 
+        - }else{ 
+            div.col-sm-2.bg-secondary.text-center.pt-3.bshadow-black
+                i Clique para entrar
+            div.col-sm-1.bg-secondary.text-center.pt-3.bshadow-black
+                a.btn.btn-primary.btn-sm.bshadow-black( type='button', href='/users/userlogin' ) Login 
+        - }
+        div.col-sm-1
