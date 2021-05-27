@@ -4,9 +4,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+require('dotenv').config();
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orcamentosRouter = require('./routes/orcamentos');
+
 //const apiOrcamentoRouter = require('./api/routes/apiOrcamentos');
 
 const app = express();
@@ -15,7 +18,7 @@ const passport = require('passport');
 const expressSession = require('express-session');
 
 app.use(expressSession({
-  secret: 'z3|d4',
+  secret: 'z3|d4',//process.env.EXPRESS_SECRET,
   resave: true,
   saveUninitialized: true
 }));
@@ -38,12 +41,7 @@ app.listen(port, function () {
 const mongoose = require('mongoose');
 
 // string connection local
-//const dev_db_url = 'mongodb://localhost:27017/nservicos';
-
-// string connection Atlas
-const user = process.env.USER;
-const pass = process.env.PASS;
-const dev_db_url = 'mongodb+srv://${user}:${pass}@cluster0.27qk0.gcp.mongodb.net/orcamento?retryWrites=true&w=majority';
+const dev_db_url = 'mongodb://localhost:27017/nservicos';
 
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
