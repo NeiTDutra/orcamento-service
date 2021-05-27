@@ -11,7 +11,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orcamentosRouter = require('./routes/orcamentos');
 
-//const apiOrcamentoRouter = require('./api/routes/apiOrcamentos');
+// const apiOrcamentoRouter = require('./api/routes/apiOrcamentos');
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-//server deploy
+// server deploy
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
     console.log('Site listening on port %s', port);
