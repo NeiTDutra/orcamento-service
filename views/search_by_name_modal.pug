@@ -1,0 +1,25 @@
+div.modal.fade#searchModal( role="dialog" )
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                spam
+                h4.modal-title#searchModalLabel #[strong Busca por nome]
+            div.modal-body
+                form( role="form", method="get", action="/orcamentos/orcamentos" )
+                    table.table.table-sm
+                        tr
+                        script.
+                            $('#searchModal').on('shown.bs.modal', function (e) {
+                            e.preventDefault();
+                            $('#search_name').focus();
+                            });
+                            $('#searchModal').on('hidden.bs.modal', function (e) {
+                            e.preventDefault();
+                            $(this).removeData('bs.modal');
+                            });
+                        td
+                            input#search_name.form-control( type="text", placeholder="Digite o nome", name="nome", required="true" )
+                    hr
+                    button.btn.btn-primary.btn-sm.ml-2.bshadow( type="submit" ) Buscar 
+            div.modal-footer
+                button.btn.btn-secondary.btn-sm.bshadow( type="button", data-dismiss="modal" ) Cancelar

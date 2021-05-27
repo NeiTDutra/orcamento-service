@@ -1,0 +1,175 @@
+extends orcamento_index
+
+block orcamento-list
+
+  h3.pt-2.pb-2.pl-2.bg-warning #[strong #{title}]
+  hr
+
+  form( method='POST' action='' )
+    input(type='hidden', name='_csrf', value=csrfToken )
+    table#tbl_title.table.table-sm
+      tr.table-dark
+        td
+          h4 Orçamento
+        td
+          b Número:
+          input#numero(type='text', placeholder='Número (00000)', name='numero', size='6', required='true', value=(undefined===orcamento ? numero : orcamento.numero) )
+        td
+          b Data:
+          - if(undefined===orcamento){
+            input#data(type='date', name='data', size='6', required='true')
+          - }
+          - else {
+            input#data(type='text', name='data', size='6', value=(orcamento.data) readonly)
+          - }
+        td
+          b Situação:
+          select#situacao(name='situacao', required='true' )
+            option(default) #{undefined===orcamento ? '--Select--' : orcamento.situacao}
+            option(value='aberto') Aberto
+            option(value='fechado') Fechado
+            option(value='arquivado') Arquivado
+            option(value='devedor') Devedor
+    table#tbl_head
+      tr
+        td
+          h4 Empresa
+        td
+          h4 Cliente  
+      tr
+        td
+          table#tbl_empr
+            tr.table-dark
+              th Nome:
+                td
+                  input#nome(type='text', placeholder='Nome da empresa', name='empresa_nome', required='true' value=(undefined===orcamento ? 'NServiços' : orcamento.empresa[0].nome) )
+            tr.table-dark
+              th Id/CNPJ:
+                td
+                  input#cnpj(type='text', placeholder='CNPJ da empresa', name='empresa_cnpj', required='true', value=(undefined===orcamento ? '22.552.033/0001-87' : orcamento.empresa[0].cnpj))
+            tr.table-dark
+              th Fone:
+                td
+                  input#fone(type='text', placeholder='Fone da empresa', name='empresa_fone', required='true', value=(undefined===orcamento ? '51 99253 7360' : orcamento.empresa[0].fone), onkeyup="mascara(this, '## ##### ####')", maxlength="13")
+        td 
+          table#tbl_cli
+            tr.table-dark
+              th.th6 Nome:
+                td.td44
+                  input#cliente_nome(type='text', placeholder='Nome do cliente', name='cliente_nome', required='true', value=(undefined===orcamento ? '' : orcamento.cliente[0].nome))
+              td.th6 Rua:
+                td.td44
+                  input#cliente_rua(type='text', placeholder='Endereço', name='cliente_rua', required='true', value=(undefined===orcamento ? '' : orcamento.cliente[0].rua))
+            tr.table-dark 
+              th.th6 Email:
+                td.td44
+                  input#cliente_email(type='text', placeholder='Email', name='cliente_email', value=(undefined===orcamento ? '' : orcamento.cliente[0].email))
+              td.th6 Nº:
+                td.td44
+                  input#cliente_numero(type='text', placeholder='Numero', name='cliente_numero', required='true', value=(undefined===orcamento ? '' : orcamento.cliente[0].numero))
+            tr.table-dark
+              th.th6 Fone:
+                td.td44
+                  input#cliente_fone(type='text', placeholder='Fone', name='cliente_fone', required='true', value=(undefined===orcamento ? '' : orcamento.cliente[0].fone), onkeyup="mascara(this, '## ##### ####')", maxlength="13")
+              td.th6 Cidade:
+                td.td44
+                  input#cliente_cidade(type='text', placeholder='Cidade', name='cliente_cidade', required='true', value=(undefined===orcamento ? '' : orcamento.cliente[0].cidade))
+    br
+    br
+    h4 Serviço
+    table#tbl_orc
+      tr.table-dark
+        th.w-10 Quant.
+        th.w-60 Descrição
+        th V. unit
+        th V. total
+        th
+      - if(orcamento){
+        - for(let i=0; i<orcamento.servico[0].quantidade.length; i++)
+          - let a = i + 1;
+          - let t_o_q = 'tbl_orcquantidade' + a;
+          - let t_o_v_u = 'tbl_orcvalorUnitario' + a;
+          - let t_o_v_t = 'tbl_orcvalorTotal' + a;
+          - let t_o_q_del = 'tbl_orcquantidade' + i;
+          - let t_o_v_u_del = 'tbl_orcvalorUnitario' + i;
+          - let t_o_v_t_del = 'tbl_orcvalorTotal' + i;
+            tr
+              td
+                input(id="tbl_orcquantidade" + a, type="text", name="servico_quantidade", size="5", required="true", value=(orcamento.servico[0].quantidade[i]))
+              td
+                input(id="tbl_orcdescricao" + a, type="text", name="servico_descricao", size="40", required="true", value=(orcamento.servico[0].descricao[i]))
+              td
+                input(id="tbl_orcvalorUnitario" + a, type="text", name="servico_v_unitario", size="8", required="true", onkeyup="k(this), calculaMult('"+(t_o_q)+"','"+(t_o_v_u)+"','"+(t_o_v_t)+"','tbl_orc')", value=(orcamento.servico[0].v_unitario[i]))
+              td
+                input(id="tbl_orcvalorTotal" + a, type="text", class="tbl_orc_sttl", name="servico_v_total", size="8", onfocus="k(this)", readonly='true', value=(orcamento.servico[0].v_total[i]))
+              td
+                button.btn.btn-outline-danger.btn-sm(type="button", onclick="removeLinha(this,'"+(t_o_q_del)+"','"+(t_o_v_u_del)+"','"+(t_o_v_t_del)+"','tbl_orc');") Excluir
+      - }
+
+    button.btn.btn-outline-primary.btn-sm.bshadow(type="button", onclick="adicionaLinha('tbl_orc'); return false;") Adicionar Serviço
+    br
+    br
+    h4 Material
+    table#tbl_mtl
+      tr.table-dark
+        th.w-10 Quant.
+        th.w-60 Descrição
+        th V. unit
+        th V. total
+        th
+      - if(orcamento){
+        - for(let i=0; i<orcamento.material[0].quantidade.length; i++)
+          - let a = i + 1;
+          - let t_m_q = 'tbl_mtlquantidade' + a;
+          - let t_m_v_u = 'tbl_mtlvalorUnitario' + a;
+          - let t_m_v_t = 'tbl_mtlvalorTotal' + a;
+          - let t_o_q_del = 'tbl_mtlquantidade' + i;
+          - let t_o_v_u_del = 'tbl_mtlvalorUnitario' + i;
+          - let t_o_v_t_del = 'tbl_mtlvalorTotal' + i;
+            tr
+              td
+                input( id="tbl_mtlquantidade" + a, type="text", name="material_quantidade", size="5", required="true", value=(orcamento.material[0].quantidade[i]))
+              td
+                input( id="tbl_mtldescricao" + a, type="text", name="material_descricao", size="40", required="true", value=(orcamento.material[0].descricao[i]))
+              td
+                input( id="tbl_mtlvalorUnitario" + a, type="text", name="material_v_unitario", size="8", required="true", onkeyup="k(this), calculaMult('"+(t_m_q)+"','"+(t_m_v_u)+"','"+(t_m_v_t)+"','tbl_mtl')", value=(orcamento.material[0].v_unitario[i]))
+              td
+                input( id="tbl_mtlvalorTotal" + a, type="text", class="tbl_mtl_sttl", name="material_v_total", size="8", onfocus="k(this)", readonly='true', value=(orcamento.material[0].v_total[i]))
+              td
+                button.btn.btn-outline-danger.btn-sm(type="button", onclick="removeLinha(this,'"+(t_o_q_del)+"','"+(t_o_v_u_del)+"','"+(t_o_v_t_del)+"','tbl_mtl');") Excluir
+      - }
+
+    button.btn.btn-outline-primary.btn-sm.bshadow(type="button", onclick="adicionaLinha('tbl_mtl'); return false;") Adicionar Material
+    br
+    br
+    h4 Valores
+    table#ttl_orc
+      tr.table-dark
+        th Descrição:
+        th.w-20 Valor Total Serviços
+        th.w-20 Valor Total Materiais
+        th.w-20 Valor Total Orçamento
+      tr
+        th
+          b Valores:
+        td
+          input#v_t_servico(type='text', placeholder='V. tl. serviço', name='v_t_servico', value=(undefined===orcamento ? '' : orcamento.v_t_servico))
+        td
+          input#v_t_material(type='text', placeholder='V. tl. material', name='v_t_material', value=(undefined===orcamento ? '' : orcamento.v_t_material))
+        td
+          input#v_t_orcamento(type='text', placeholder='V. tl. orçamento', name='v_t_orcamento', value=(undefined===orcamento ? '' : orcamento.v_t_orcamento))
+    br
+    br
+    h4 Obs.:
+    div#dv
+      textarea#obs(placeholder='Descreva observações', name='obs' ) #{undefined===orcamento ? '' : orcamento.obs}
+      br
+      br
+    button.btn.btn-primary.btn-sm.bshadow( type='submit' ) Salvar
+    a.button.btn.btn-outline-primary.btn-sm.ml-3.bshadow( href='javascript:history.back();') Voltar
+    br
+    br
+    if errors 
+      ul
+        for error in errors
+          li!= error.msg

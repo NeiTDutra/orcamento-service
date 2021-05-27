@@ -1,0 +1,267 @@
+extends index
+
+block content-index
+   
+    header.fixed-nav.hdrwdt
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            a.navbar-brand( href="#home" ) Nei Thomassin Dutra
+            button.navbar-toggler( 
+                type="button" 
+                data-toggle="collapse" 
+                data-target="#conteudoNavbarSuportado"
+                aria-controls="conteudoNavbarSuportado" 
+                aria-expanded="false" 
+                aria-label="Alterna navegação"
+                )
+                span( class="navbar-toggler-icon" )
+
+            div.collapse.navbar-collapse#conteudoNavbarSuportado
+                ul.navbar-nav.mr-auto
+                ul.navbar-nav
+                    li.nav-item
+                        a.nav-link( href="#projetos" ) Projetos
+                    li.nav-item
+                        a.nav-link( href="#sobremim" ) Sobre mim
+                    li.nav-item
+                        a.nav-link( href="#tecnologias" ) Tecnologias
+                    li.nav-item
+                        a.nav-link( href="#contato" ) Contato
+
+    <!--entre sessões-->
+
+    div.separate.top5#home
+        img( src="./images/circuito1.png" alt="" )
+
+    <!--capa do site-->
+
+    section.jumbotron.text-center.bg-pr.mt-0.mb-0.h75
+        div.container.text-light
+            img.capa#foto( src="./images/capa.png" alt="Minha foto" )
+            h1.jumbotron-heading Nei Thomassin Dutra
+            p.lead Analista e desenvolvedor de sistemas | Desenvolvedor freelance | Tecnologias web
+            a.btn.btn-outline-primary.my-2( href="#contato" ) Contato
+            p
+            a( href="http://linkedin/neithomassindutra" 
+                title="http://linkedin/neithomassindutra"
+                target="_blank" 
+            )
+                i.fab.fa-linkedin
+            a( href="https://github.com/NeiTDutra" 
+                title="https://github.com/NeiTDutra"
+                target="_blank"
+            )
+                i.fab.fa-github.ml-3
+            a( href="https://gitlab.com/neithomass" 
+                title="https://gitlab.com/neithomass"
+                target="_blank"
+            )
+                i.fab.fa-gitlab.ml-3
+
+    <!--entre sessões-->
+
+    div.row#projetos
+        div.col-sm-3
+        div.col-sm-6
+            img.img-ml( src="./images/circuito2.png" alt="" )
+        div.col-sm-3
+
+    <!--cards de projetos-->
+
+    section
+        div.album.bg-white.h80
+            div.container
+                h2.jumbotron-heading.text-center.titulo Projetos
+                p.text-center.lead.mb-1
+                    | Todos projetos são pessoais, nenhum usado em produção ou profissionalmente.
+                p.text-center
+                    | No arquivo README.md de cada projeto no github, está um nome e uma senha para 
+                    | acessar e testar, e depois me retornar um 
+                    a( href="mailto:nei.thomass@gmail.com" ) feedback.
+                br
+                div.row
+                    div.col-md-4
+                        div.card.shadow-sm.bg-dark.text-white
+                            img.card-img-top.p-2( src="./images/nservicosorcamentos.png" alt="Card image cap" )
+                            div.card-body
+                                h5.card-title Gerenciador de orçamentos
+                                p.card-text
+                                    | Sistema gerenciador de orçamentos para serviços e produtos.
+                                p
+                                    | javascript | HTML | CSS
+                                p
+                                    | Node.js | MongoDB | Bootstrap
+                                p
+                                    | Express.js | Mongoose.js | Passport.js
+                                div.d-flex.justify-content-between.align-items-center
+                                    div.btn-group
+                                        a( href="https://norcamentos.herokuapp.com/" target="_blank" )
+                                            button.btn.btn-sm.btn-success( type="button" ) Vizitar site
+                                        a( href="https://github.com/NeiTDutra/orcamento-service" target="_blank" )
+                                            button.btn.btn-sm.btn-primary.ml-2( type="button" ) Git do projeto
+                    div.col-md-4
+                        div.card.shadow-sm.bg-dark.text-white
+                            img.card-img-top.p-2( src="./images/gestãodeclientes.png" alt="Card image cap" )
+                            div.card-body
+                                h5.card-title Cadastro de clientes
+                                p.card-text
+                                    | Sistema gerenciador de clientes para guardar e gerenciar lista de clientes.
+                                p
+                                    | Python | HTML | CSS
+                                p
+                                    | Django.py | PostgreeSQL | Heroku
+                                div.d-flex.justify-content-between.align-items-center
+                                    div.btn-group
+                                        a( href="https://crmmngcli.herokuapp.com/login/" target="_blank" )
+                                            button.btn.btn-sm.btn-success( type="button" ) Vizitar site
+                                        a( href="https://github.com/NeiTDutra/django_costumer_manager" target="_blank" )
+                                            button.btn.btn-sm.btn-primary.ml-2( type="button" ) Git do projeto
+                    div.col-md-4
+                        div.card.shadow-sm.bg-dark.text-white
+                            img.card-img-top.p-2( src="./images/pjcelo.png" alt="Card image cap" )
+                            div.card-body
+                                h5.card-title Gerenciador de orçamentos, clientes e estoque
+                                p.card-text
+                                    | Sistema gerenciador de orçamentos para serviços e produtos, clientes e controle de estoque.
+                                p
+                                    | PHP | MySQL | HTML | CSS
+                                p
+                                    | Dompdf | PHPMailer
+                                div.d-flex.justify-content-between.align-items-center
+                                    div.btn-group
+                                        a( href="https://orcamentosfree.000webhostapp.com/index.php" target="_blank" )
+                                            button.btn.btn-sm.btn-success( type="button" ) Vizitar site
+                                        a( href="https://github.com/NeiTDutra/C.E.L.O." target="_blank" )
+                                            button.btn.btn-sm.btn-primary.ml-2( type="button" ) Git do projeto
+    <!--entre sessões-->
+
+    div.row#sobremim
+        div.col-sm-3
+        div.col-sm-6
+            img.img-ml( src="./images/circuito3.png" alt="" )
+        div.col-sm-3
+
+    <!--descrição pessoal-->
+
+    section.jumbotron.text-center.bg-pr.mb-0.text-light.h80
+        div.container
+            h2.jumbotron-heading.titulo-b.mb-5
+                | Sobre mim
+            p.lead
+                | Formado em análise e desenvolvimento de sistemas em 2021 pela Universidade 
+                | Cruzeiro do Sul, e desbravador de novas tecnologias no geral mas, principalmente, 
+                | com tendências apontadas para web, desde 2010. Autodidata pelos caminhos das documentações 
+                | de linguagens de programação e frameworks, bem como pelas diversas tendências que 
+                | envolvem as staks do nicho da web. 
+            br
+            p.lead
+                | Com vários certificados de cursos livres e através das documentações das diversas 
+                | tecnologias, venho me preparando ao longo do tempo dedicado em projetos pessoais, para
+                | enfrentar os desafios e aproveitar das oportunidades profissionais, para desenvolver 
+                | sempre mais e melhor.
+            br
+            p.lead
+                | Afora, dou valor a estar com a família e curtir a descontração de pescar um 
+                | peixe maior com os amigos, pedalar por alguma trilha, viajar pra conhecer e curtir outros lugares, 
+                | tomar um banho de mar e voltar para tomar um café e codificar.
+    <!--entre sessões-->
+
+    div.row#tecnologias
+        div.col-sm-3
+        div.col-sm-6
+            img.img-ml( src="./images/circuito4.png" alt="" )
+        div.col-sm-3
+
+    <!--tecnologias assistidas-->
+
+    section.jumbotron.text-center.mb-0.h80
+        div.container
+            h2.jumbotron-heading.titulo.pb-5
+                | Algumas tecnologias assistidas
+            div.row
+                div.col-sm-4
+                    h3.mb-5 Linguagens:
+                    ul.teclist
+                        li
+                            img.logolist( src="./images/html.png" ) 
+                            | HTML
+                        li
+                            img.logolist( src="./images/css.jpeg" ) 
+                            | CSS
+                        li
+                            img.logolist( src="./images/js.jpeg" ) 
+                            | JAVASCRIPT
+                        li
+                            img.logolist( src="./images/php.png" ) 
+                            | PHP
+                        li
+                            img.logolist( src="./images/python.png" ) 
+                            | PYTHON
+                        li
+                            img.logolist( src="./images/sql.jpeg" ) 
+                            | SQL
+                        li
+                            img.logolist( src="./images/nosql.png" ) 
+                            | NOSQL
+                    
+                div.col-sm-4
+                    h3.mb-5 Frameworks:
+                    ul.teclist
+                        li
+                            img.logolist( src="./images/node.png" ) 
+                            | NODE.JS
+                        li
+                            img.logolist( src="./images/angular.png" ) 
+                            | ANGULAR.JS
+                        li
+                            img.logolist( src="./images/react.png" ) 
+                            | REACT.JS
+                        li
+                            img.logolist( src="./images/django.jpeg" ) 
+                            | DJANGO.PY
+                        li
+                            img.logolist( src="./images/flask.png" ) 
+                            | FLASK.PY
+                        li
+                            img.logolist( src="./images/bootstrap.png" ) 
+                            | BOOTSTRAP
+                        li
+                            img.logolist( src="./images/jquery.jpeg" ) 
+                            | JQUERY
+                div.col-sm-4
+                    h3.mb-5 Databases:
+                    ul.teclist
+                        li
+                            img.logolist( src="./images/mysql.png" )
+                            | MYSQL
+                        li
+                            img.logolist( src="./images/mongodb.png" ) 
+                            | MONGODB
+                        li
+                            img.logolist( src="./images/postgre.png" ) 
+                            | POSTGRESQL
+                        li
+                            img.logolist( src="./images/sqlite.png" ) 
+                            | SQLITE
+
+    <!--entre sessões-->
+
+    div.row#contato
+        div.col-sm-3
+        div.col-sm-6
+            img.img-ml( src="./images/circuito5.png" alt="" )
+        div.col-sm-3
+
+    <!--contato-->
+
+    section.bg-pr.h80
+        div
+            div.container-fluid.pb-5.text-center
+                h3.text-center.titulo-b.pt-5.pb-5 Disponível para oportunidades
+                a( href="mailto:nei.thomass@gmail.com" target="_blank" )
+                    img.pngcontato( src="./images/mail.png" alt="email" )
+                    h4.text-center.text-white nei.thomass@gmail.com
+                br
+                a( href="https://api.whatsapp.com/send?phone=5551992537360&text=Olá%20Nei" target="_blank" )
+                    img.pngcontato( src="./images/whats.png" alt="whatsapp" )
+                    h4.text-center.text-white (51) 99253 7360
+

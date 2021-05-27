@@ -1,0 +1,43 @@
+extends user_index
+
+block user-list
+
+  h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
+  hr
+
+  p #[strong Nome: ] #{ user_detail.nome }
+    | #[strong.ml-2 Email: ] #{ user_detail.email }
+    - if(user_detail.nome !== 'root' && user_detail.senha !== 'Root'){
+      | #[strong.ml-2 Senha: ] #{ user_detail.senha }
+    - }
+    | #[strong.ml-2 Status: ] #{ user_detail.status }
+  hr
+  br
+  - if(loged && (loged.status==='master') && (user_detail.nome !== 'root' && user_detail.senha !== 'Root') || (loged.nome === 'root' && loged.senha === 'Root')){
+    button.btn.btn-sm.btn-danger.bshadow(type='button',  data-toggle='modal', data-target='#Modal') Remover
+
+    a.btn.btn-sm.btn-primary.ml-2.bshadow(type='button', href=user_detail.url+'/update') Alterar
+  - }
+  a.btn.btn-sm.btn-primary.bshadow.ml-3( href='/users' ) #[strong Lista de usuários]
+
+  div.modal.fade(id='Modal' role="dialog")
+    div.modal-dialog
+    
+      div.modal-content
+        div.modal-header
+          button.close( data-dismiss="modal" )
+          h4.modal-title.text-danger #[strong Quer realmente remover este usuário?]
+        div.modal-body
+          p Nome: #[strong #{ user_detail.nome }]
+          p Email: #[strong #{ user_detail.email }]
+          p Senha: #[strong #{ user_detail.senha }]
+          p Status: #[strong #{ user_detail.status }]
+
+          form( method='POST' action=user_detail.url+'/delete' )
+              input(type='hidden', name='_csrf', value=csrfToken )
+              input( type='hidden' name='user_id' value=user_detail._id )
+              hr
+              button.btn.btn-danger.btn-sm.bshadow( type='submit' ) Remover
+
+        div.modal-footer
+          button.btn.btn-primary.btn-sm.bshadow(data-dismiss="modal") Cancelar

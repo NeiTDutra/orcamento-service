@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+    div.col-sm-10
+
+        div.mb-5.ml-3.mr-3.p-3.bshadow
+
+            include user_menu.pug
+    
+            block user-list
+
+                div.mb-5.ml-3    
+                    h3.text-center.bg-warning.pt-2.pb-2 User Index
+                    hr
+                    img(src="../../../images/user.png", alt="Imagem de usuários")

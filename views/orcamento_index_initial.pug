@@ -1,0 +1,33 @@
+extends orcamento_index
+
+block orcamento-list
+        
+    h3.pt-2.pb-2.pl-2.bg-warning #[strong Estatísticas]
+    hr
+    div.row
+        div.col-sm-6.p-3 
+            table.table.text-center
+                thead.table-dark
+                    tr
+                        th(scope='col') Total de orçamentos
+                        th(scope='col') Orçamentos abertos
+                        th(scope='col') Orçamentos arquivados
+                tbody
+                    tr
+                        td
+                            a(href='/orcamentos/orcamentos')
+                                div.p-1( onmouseover="this.style.background='grey'", 
+                                         onmouseout="this.style.background='none'" )
+                                    | #[strong #{ data.orcamento_count }]
+                        td
+                            a(href='/orcamentos/orcamentos?situacao=aberto')
+                                div.p-1( onmouseover="this.style.background='grey'", 
+                                         onmouseout="this.style.background='none'" )
+                                    | #[strong #{ data.orcamento_sit_abe }]
+                        td 
+                            a(href='/orcamentos/orcamentos?situacao=arquivado')
+                                div.p-1( onmouseover="this.style.background='grey'", 
+                                         onmouseout="this.style.background='none'" )
+                                    | #[strong #{ data.orcamento_sit_arq }]
+        div.col-sm-6
+    hr

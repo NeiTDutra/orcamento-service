@@ -1,0 +1,27 @@
+div.col-sm-2
+    div.bg-warning.pb-3.pt-5.mb-2.bshadow.position-fixed.wdf-13
+        ul.list-group.text-center
+            li.list-group-item
+                - if(loged){
+                    a.btn.btn-outline-success.btn-sm.bshadow( href='', data-toggle="modal", data-target="#alertLogoutModal" ) #[strong Pagina inicial]
+                - }else{
+                    a.btn.btn-outline-success.btn-sm.bshadow( href="/" ) #[strong Página inicial]
+                - }
+            li.list-group-item
+                a.btn.btn-outline-success.btn-sm.bshadow( href='/orcamentos/orcamentos' ) #[strong Orçamentos]
+            - if(loged && loged.status==='master'){
+                li.list-group-item
+                    a.btn.btn-outline-success.btn-sm.bshadow( href='/users' ) #[strong Usuários]
+            - }
+        ul.list-group.dropdown.text-center.mt-3
+            li.list-group-item.dropdown-toggle( data-toggle='dropdown')
+                a( href='#' )
+                    img(src='../../../images/pontointerrogacao.png', width='40') 
+                    i Ajuda
+            div.dropdown-menu.text-center.bshadow
+                li.list-group-item.dropdown-item
+                    a.btn.btn-success.btn-sm.bshadow.pl-5.pr-5( href='/manual' )
+                        i Manual
+                li.list-group-item.dropdown-item
+                    a.btn.btn-success.btn-sm.bshadow.pl-5.pr-5( href='/contato' ) 
+                        i Contato

@@ -1,0 +1,138 @@
+extends orcamento_index
+
+block orcamento-list
+
+    h3.pt-2.pb-2.pl-2.bg-warning #[strong #{title}]
+    hr
+    div#printable
+        style(type="text/css").
+            .w-60 {
+                width: 60%;
+            }
+            .w-10 {
+                width: 10%;
+            }
+            .w-20 {
+                width: 20%;
+            }
+            .w-40 {
+                width: 40%;
+            }
+            .w-15 {
+                width: 15%;
+            }
+        h4 Orçamento
+        table#tbl_head_print.table.table-sm 
+            tbody
+                tr
+                    td.w-20 #[strong N°: ] #{ orcamento_detail.numero }
+                    td.w-20 #[strong Data: ] #{ orcamento_detail.data }
+                    td.w-30.noprint #[strong Ultima atualização:] #{ orcamento_detail.ultima_atualizacao }
+                    td.w-30 #[strong Situação: ] #{ orcamento_detail.situacao }
+
+        h4 Empresa:
+        table.table.table-sm
+            tbody
+                tr
+                    td.w-40 #[strong Nome: ] #{ orcamento_detail.empresa[0].nome }
+                    td.w-20 #[strong Fone: ] #{ orcamento_detail.empresa[0].fone }
+                    td.w-40 #[strong CNPJ: ] #{ orcamento_detail.empresa[0].cnpj }
+
+        h4 Cliente:
+        table.table.table-sm
+            tbody
+                tr
+                    td.w-40 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
+                    td.w-20 #[strong Fone: ] #{ orcamento_detail.cliente[0].fone }
+                    td.w-40 #[strong Email: ] #{ orcamento_detail.cliente[0].email }
+                tr
+                    td.w-40 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
+                    td.w-20 #[strong N°: ] #{ orcamento_detail.cliente[0].numero }
+                    td.w-40 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
+
+        h4 Serviço: 
+        table.table.table-sm
+            thead.thead-light
+                tr
+                    th.w-10 #[strong qtd]
+                    th.w-60 #[strong descrição]
+                    th.w-15 #[strong v. u]
+                    th.w-15 #[strong v. t.]
+            tbody
+
+            - for(var i=0; i < orcamento_detail.servico[0].quantidade.length; i++ )
+                tr
+                    td #{ orcamento_detail.servico[0].quantidade[i] }
+                    td #{ orcamento_detail.servico[0].descricao[i] }
+                    td #{ orcamento_detail.servico[0].v_unitario[i] }
+                    td #{ orcamento_detail.servico[0].v_total[i] }
+
+        h4 Material:
+        table.table.table-sm
+            thead.thead-light
+                tr
+                    th.w-10 #[strong qtd]
+                    th.w-60 #[strong descrição]
+                    th.w-15 #[strong v. u]
+                    th.w-15 #[strong v. t.]
+            tbody 
+
+            - for(var i=0; i < orcamento_detail.material[0].quantidade.length; i++ )
+                tr
+                    td #{ orcamento_detail.material[0].quantidade[i] }
+                    td #{ orcamento_detail.material[0].descricao[i] }
+                    td #{ orcamento_detail.material[0].v_unitario[i] }
+                    td #{ orcamento_detail.material[0].v_total[i] }
+
+        h4 Valores:
+        table.table.table-sm
+            thead.thead-light
+                tr
+                    th.w-40
+                    th.w-20 #[stromg V. total dos serviços]
+                    th.w-20 #[strong V. total dos materiais]
+                    th.w-20 #[strong V. total do orçamento]
+                tr
+                    td.w-40 Valores totais:
+                    td #{ orcamento_detail.v_t_servico }
+                    td #{ orcamento_detail.v_t_material }
+                    td #{ orcamento_detail.v_t_orcamento }
+
+        h4 Obs.:
+        p #[strong Obs.: ] 
+        pre #{ orcamento_detail.obs }
+
+        hr
+
+    p
+    - if(loged && loged.status==='master'){
+        button.btn.btn-sm.btn-danger.noprint.bshadow(type='button', data-toggle='modal', data-target='#Modal', onMouseUp='this.blur();') Remover
+
+        a.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(type='button', href=orcamento_detail.url+'/update', onMouseUp='this.blur();') Alterar
+    - }
+
+    button.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(onClick='printDiv();', onMouseUp='this.blur();') Imprimir
+
+    div.modal.fade(id='Modal' role="dialog")
+        div.modal-dialog
+        
+            div.modal-content
+                div.modal-header
+                    button.close( data-dismiss="modal" )
+                    h4.modal-title.text-danger #[strong Quer realmente remover este orçamento?]
+                div.modal-body
+                    p Numero: #[strong #{ orcamento_detail.numero }]
+                    p Data: #[strong #{ orcamento_detail.data }]
+                    p Stuação: #[strong #{ orcamento_detail.situacao }]
+                    p Cliente: #[strong #{ orcamento_detail.cliente[0].nome }]
+                    p Rua: #[strong #{ orcamento_detail.cliente[0].rua }, #{ orcamento_detail.cliente[0].numero }]
+                    p Cidade: #[strong #{ orcamento_detail.cliente[0].cidade }]
+
+                    form( method='POST' action=orcamento_detail.url+'/delete' )
+                        input(type='hidden', name='_csrf', value=csrfToken )
+                        input( type='hidden' name='orcamento_id' value=orcamento_detail._id )
+                        hr
+                        button.btn.btn-danger.btn-sm.bshadow( type='submit' ) Remover
+
+                div.modal-footer
+                    button.btn.btn-primary.btn-sm.bshadow(data-dismiss="modal") Cancelar

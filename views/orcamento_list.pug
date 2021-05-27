@@ -1,0 +1,44 @@
+extends orcamento_index
+
+block orcamento-list
+
+    script.
+        $(document).ready(function(){
+        $('table tr').click(function(){
+            window.location = $(this).data('url');
+            return false;
+            });
+        });
+
+    h3.pt-2.pb-2.pl-2.bg-warning Lista de orçamentos - #[strong #{title}]
+    hr
+
+    table.table
+        thead.thead-dark
+            tr
+                th(scope="col") Número
+                th(scope="col") Cliente
+                th(scope="col") Data
+                th(scope="col") Última atualização
+                th(scope="col") Situação
+                th(scope="col") Valor Serviço
+
+        tbody
+            each orcamento in orcamento_list
+                tr(data-url=orcamento.url, style="cursor:pointer", onmouseover="this.style.background='grey'", onmouseout="this.style.background='none'")
+                    
+                    td #{ orcamento.numero }
+                    td #{ orcamento.cliente[0].nome }
+                    td #{ orcamento.data }
+                    td #{ orcamento.ultima_atualizacao }
+                    - if(orcamento.situacao === 'devedor'){
+                        td.devedor #{ orcamento.situacao }
+                    - }else{
+                        td #{ orcamento.situacao }
+                    - }
+                    td #{ orcamento.v_t_servico }
+
+            else
+                ul.list-unstyled.ml-3
+
+                    li There are no orçamentos.
