@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const dotenv = require('dotenv');
-dotenv.config({path: './config.env'});
+dotenv.config({path: path.join(__dirname, './config.env')});
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -19,7 +19,7 @@ const passport = require('passport');
 const expressSession = require('express-session');
 
 app.use(expressSession({
-  secret: process.env.EXPRESS_SECRET || 'banana',
+  secret: process.env.EXPRESS_SECRET,
   resave: true,
   saveUninitialized: true
 }));
@@ -40,7 +40,7 @@ app.listen(port, function () {
 
 // connect engine setup
 const mongoose = require('mongoose');
-const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost:27017/nservicos';
+const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
