@@ -4,3 +4,34 @@ block content-index
    
     h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
     hr
+
+    p.text-danger **** This page is in development now! ****
+    p Qualquer dúvida ou sugestão será analizada e terá um retorno o mais breve possível.
+
+    script.
+        $(document).ready(function () {
+        $('#contato_nome').focus();
+        });
+    form( method='POST' action='' )
+        input.form-control(type='hidden',name='_csrf', value=csrfToken )
+        table.table.table-sm
+            tr
+                td
+                    input#contato_nome.form-control( name='contato_nome', type='text', placeholder='Nome', required='true' )
+            tr
+                td
+                    input#contato_email.form-control( name='contato_email', type='text', placeholder='E-mail', required='true' )
+            tr
+                td
+                    input#contato_title.form-control( name='contato_title', type='text', placeholder='Titulo', required='true' )
+            tr
+                td
+                    textarea#contato_message.form-control( name='contato_message', placeholder='Menssagem', required='true' )
+            hr
+        button.btn.btn-primary.btn-sm.bshadow( type='submit' ) Enviar
+        a.btn.btn-primary.btn-sm.ml-3.bshadow( type='button', href='javascript:history.back();' ) Cancelar
+
+        if errors 
+            ul
+            for error in errors
+                li!= error.msg
