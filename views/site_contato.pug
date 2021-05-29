@@ -6,18 +6,18 @@ block content-index
     hr
 
     p.text-danger **** This page is in development now! ****
-    p Qualquer dúvida ou sugestão será analizada e terá um retorno o mais breve possível.
+    p.text-success #{undefined===message ? 'Qualquer dúvida ou sugestão será analizada e terá um retorno o mais breve possível.' : message}
 
     script.
         $(document).ready(function () {
-        $('#contato_nome').focus();
+        $('#contato_name').focus();
         });
     form( method='POST' action='' )
         input.form-control(type='hidden',name='_csrf', value=csrfToken )
         table.table.table-sm
             tr
                 td
-                    input#contato_nome.form-control( name='contato_nome', type='text', placeholder='Nome', required='true' )
+                    input#contato_name.form-control( name='contato_name', type='text', placeholder='Nome', required='true' )
             tr
                 td
                     input#contato_email.form-control( name='contato_email', type='text', placeholder='E-mail', required='true' )

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const orcamento_controller = require('../controllers/orcamentoController');
-let auth = require('../controllers/authController');
+const auth = require('../controllers/authController');
 
 /* GET users listing. */
 router.get('/', orcamento_controller.index);

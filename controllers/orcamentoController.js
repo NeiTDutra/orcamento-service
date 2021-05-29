@@ -19,7 +19,11 @@ exports.index = (req, res, next) => {
 
             if(err) { return next(err); }
 
-            res.render('orcamento_index_initial', { title: 'Estatísticas', data: results });
+            res.render('orcamento_index_initial',
+                { 
+                    title: 'Estatísticas', 
+                    data: results 
+                });
         });
 };
 
@@ -32,7 +36,11 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
     
-            res.render('orcamento_list', { title: 'Busca por nome', orcamento_list: list_orc_seg });
+            res.render('orcamento_list',
+                { 
+                    title: 'Busca por nome', 
+                    orcamento_list: list_orc_seg 
+                });
         });
     }
     else if (req.query.situacao) {
@@ -42,7 +50,11 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
 
-            res.render('orcamento_list', { title: 'Situação "'+sit+'"', orcamento_list: list_orc_sit });
+            res.render('orcamento_list',
+                { 
+                    title: 'Situação "'+sit+'"', 
+                    orcamento_list: list_orc_sit 
+                });
         });
     }
     else if (req.query.time && req.query.modo) {
@@ -61,7 +73,11 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
 
-            res.render('orcamento_list', { title: 'Busca por "'+campo+'", mês "'+time+'"', orcamento_list: list_orc_sit });
+            res.render('orcamento_list',
+                { 
+                    title: 'Busca por "'+campo+'", mês "'+time+'"', 
+                    orcamento_list: list_orc_sit 
+                });
         });
     }
     else {
@@ -70,7 +86,11 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
             
-            res.render('orcamento_list', { title: 'Todos orçamentos', orcamento_list: list_orc });
+            res.render('orcamento_list',
+                { 
+                    title: 'Todos orçamentos', 
+                    orcamento_list: list_orc 
+                });
         });
     }
 };
@@ -81,7 +101,12 @@ exports.orcamento_detail = (req, res, next) => {
 
         if(err) { return next(err); }
 
-        res.render('orcamento_detail', { title: 'Detalhe do orçamento', orcamento_detail: detail_orc, csrfToken: req.csrfToken() });
+        res.render('orcamento_detail',
+            { 
+                title: 'Detalhe do orçamento', 
+                orcamento_detail: detail_orc, 
+                csrfToken: req.csrfToken() 
+            });
     });
 };
 
@@ -100,7 +125,12 @@ exports.orcamento_create_get = (req, res, next) => {
             var n = num[0].numero + 1;
         }
         
-        res.render('orcamento_form', { title: 'Novo orçamento', numero: n, csrfToken: req.csrfToken() });
+        res.render('orcamento_form',
+            { 
+                title: 'Novo orçamento', 
+                numero: n, 
+                csrfToken: req.csrfToken() 
+            });
 
     });
 };
@@ -178,7 +208,12 @@ exports.orcamento_update_get = (req, res, next) => {
             err.status = 404;
             return next(err);
         }
-        res.render('orcamento_form', { title: 'Orçamento', orcamento: orcamento, csrfToken: req.csrfToken() });
+        res.render('orcamento_form',
+            { 
+                title: 'Orçamento', 
+                orcamento: orcamento, 
+                csrfToken: req.csrfToken() 
+            });
     });
 };
 
