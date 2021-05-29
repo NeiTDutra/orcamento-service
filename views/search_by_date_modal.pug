@@ -6,36 +6,26 @@ div.modal.fade#searchModalDate( role="dialog" )
                 h4.modal-title#searchModalDateLabel #[strong Busca por data (mês)]
             div.modal-body
                 form( role="form", method="get", action="/orcamentos/orcamentos" )
-                    table.table.table-sm
-                        tr
-                        script.
-                            $('#searchModalDate').on('shown.bs.modal', function (e) {
-                            e.preventDefault();
-                            $('#time').focus();
-                            });
-                            $('#searchModalDate').on('hidden.bs.modal', function (e) {
-                            e.preventDefault();
-                            $(this).removeData('bs.modal');
-                            });
-                        td
-                            select.form-select.pt-1.pb-1#time( name="time", required="true" )
-                                option( value="01" ) Janeiro
-                                option( value="02" ) Fevereiro
-                                option( value="03" ) Março
-                                option( value="04" ) Abril
-                                option( value="05" ) Maio
-                                option( value="06" ) Junho
-                                option( value="07" ) Julho
-                                option( value="08" ) Agosto
-                                option( value="09" ) Setembro
-                                option( value="10" ) Outubro
-                                option( value="11" ) Novembro
-                                option( value="12" ) Dezembro
-                        tr 
-                        td
-                            select.form-select.pt-1.pb-1( name="modo", required="true" )
-                                option( value="data" ) Data de lançamento
-                                option( value="ultima_atualizacao" ) Última atualização
+                    select.form-select.pt-1.pb-1#time( name="time", required="true" )
+                        option( value="01" ) Janeiro
+                        option( value="02" ) Fevereiro
+                        option( value="03" ) Março
+                        option( value="04" ) Abril
+                        option( value="05" ) Maio
+                        option( value="06" ) Junho
+                        option( value="07" ) Julho
+                        option( value="08" ) Agosto
+                        option( value="09" ) Setembro
+                        option( value="10" ) Outubro
+                        option( value="11" ) Novembro
+                        option( value="12" ) Dezembro
+                    hr
+                    div.form-check
+                        input#data-lancamento.form-check-input( type="radio", name="modo", value="data", checked )
+                        label.form-check-label(for="data-lancamento") Data de lançamento
+                    div.form-check
+                        input#ultima-atualizacao.form-check-input( type="radio", name="modo", value="ultima_atualizacao" )
+                        label.form-check-label(for="ultima-atualizacao") Última atualização
                     hr
                     button.btn.btn-primary.btn-sm.ml-2.bshadow( type="submit" ) Buscar 
             div.modal-footer

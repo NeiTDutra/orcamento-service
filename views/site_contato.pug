@@ -6,8 +6,10 @@ block content-index
     hr
 
     p.text-danger **** This page is in development now! ****
-    p.text-success #{undefined===message ? 'Qualquer dúvida ou sugestão será analizada e terá um retorno o mais breve possível.' : message}
-
+    - if(!message) 
+        p.text-secondary Qualquer dúvida ou sugestão será analisada e terá um retorno o mais breve possível.
+    -else 
+        p.text-success #{message}
     script.
         $(document).ready(function () {
         $('#contato_name').focus();

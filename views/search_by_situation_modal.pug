@@ -6,23 +6,18 @@ div.modal.fade#searchModalSit( role="dialog" )
                 h4.modal-title#searchModalSitLabel #[strong Busca por situação]
             div.modal-body
                 form( role="form", method="get", action="/orcamentos/orcamentos" )
-                    table.table.table-sm
-                        tr
-                        script.
-                            $('#searchModalSit').on('shown.bs.modal', function (e) {
-                            e.preventDefault();
-                            $('#situacao').focus();
-                            });
-                            $('#searchModalSit').on('hidden.bs.modal', function (e) {
-                            e.preventDefault();
-                            $(this).removeData('bs.modal');
-                            });
-                        td
-                            select.form-select.pt-1.pb-1#situacao( name="situacao", required="true" )
-                                option( value="aberto" ) Aberto
-                                option( value="fechado" ) Fechado
-                                option( value="arquivado" ) Arquivado
-                                option( value="devedor" ) Devedor
+                    div.form-check
+                        input#aberto.form-check-input(type="radio", value="aberto", name="situacao" checked)
+                        label.form-check-label(for="aberto") Aberto
+                    div.form-check
+                        input#fechado.form-check-input(type="radio", value="fechado", name="situacao")
+                        label.form-check-label(for="fechado") Fechado
+                    div.form-check                                
+                        input#arquivado.form-check-input(type="radio", value="arquivado", name="situacao")
+                        label.form-check-label(for="arquivado") Arquivado
+                    div.form-check                                
+                        input#devedor.form-check-input(type="radio", value="devedor", name="situacao")
+                        label.form-check-label(for="devedor") Devedor
                     hr
                     button.btn.btn-primary.btn-sm.ml-2.bshadow( type="submit" ) Buscar 
             div.modal-footer
