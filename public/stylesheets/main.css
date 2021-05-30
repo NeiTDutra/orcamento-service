@@ -218,6 +218,15 @@ footer {
   width: 10%;
 }
 
+#content-manual {
+  padding-left: 25%;
+  margin-top: 8%;
+}
+
+#nav-manual {
+  width: 17%;
+}
+
 #foto {
   animation-name: vision;
   animation-duration: 2s;
