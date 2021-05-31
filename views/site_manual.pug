@@ -1,23 +1,26 @@
 extends index
 
 block content-index
-   
-    h3.bg-warning.pt-2.pb-2.pl-2.fixed.w-75 #[strong #{title}]: v-1.0
 
-    section#nav-manual.fixed-nav.mt-5
-        nav.navbar.pt-5
+    section#nav-manual.fixed-nav.bg-white.bshadow
+        h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
+        nav.navbar
             h4.text-secondary Tópicos 
             ul.navbar-nav 
                 li.nav-item 
                     a.nav-link(href="/manual/geral") Visão geral 
                 li.nav-item 
-                    a.nav-link(href="/manual/criando") Criando orçamento  
+                    a.nav-link(href="/manual/criando") Criando orçamento 
+                li.nav-item 
+                    a.nav-link(href="/manual/editando") Editando orçamento  
                 li.nav-item 
                     a.nav-link(href="/manual/listando") Listando orçamentos
                 li.nav-item 
                     a.nav-link(href="/manual/imprimindo") Imprimindo orçamento
                 li.nav-item 
                     a.nav-link(href="/manual/apagando") Apagando orçamento 
+                li.nav-item 
+                    a.nav-link(href="/manual/usuarios") Sobre usuários 
                 li.nav-item 
                     a.nav-link(href="/manual/logando") Fazendo login
                 li.nav-item 

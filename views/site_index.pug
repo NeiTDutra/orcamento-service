@@ -2,52 +2,51 @@ extends index
 
 block content-index
    
-    h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
-    hr
+    div.text-center.align-items-center
+        h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
+        hr
 
-    h3 Sistema para gerenciar orçamentos
-    p Este é um sistema funcional para gerar orçamentos
-        |  e salvar os dados em um banco de dados NoSQL ou salvar
-        |  em um documento PDF. É possível fornecer listagem de 
-        |  serviços e produtos, acompanhar de acordo com a situção e
-        |  verificar estatísticas. Oferece segurança através de login e senha,
-        |  com níveis de acesso às funcionalidades de acordo com o estipulado
-        |  para cada usuário do sistema.
-    p Para prolongar sua vida útil, este sistema está em constante desenvolvimento.
+        h1.t-shadow-black #[strong.text-primary N] Serviços 
 
-    h4 Salvar orçamentos
-    p Este sistema permite guardar todas instâncias dos dados em um banco de dados 
-        |  para recuperar, atualizar, modificar ou apagar com segurança.
+        h2.t-shadow-black Gerenciador de orçamentos 
 
-    h4 Imprimir PDF
-    p Na opção para impressão, pode-se imprimir diretamente através do diálogo de
-        |  impressão do navegador de internet bem como, salvar o orçamento em um 
-        |  arquivo PDF, o que possibilita outra forma de manter os dados.
+        p.t-shadow-black.text-secondary V.- 1.0
+        br
+        img(src="/images/orcamento.png", alt="Gráfico ilustrativo de orçamentos", width="600")
+        br
+        hr
+        h3 Sistema para gerenciar orçamentos
+        p Este é um sistema funcional para gerar orçamentos
+            |  e salvar os dados em um banco de dados NoSQL ou salvar
+            |  em um documento PDF. É possível fornecer listagem de 
+            |  serviços e produtos, acompanhar de acordo com a situção e
+            |  verificar estatísticas. Oferece segurança através de login e senha,
+            |  com níveis de acesso às funcionalidades de acordo com o estipulado
+            |  para cada usuário do sistema.
+        p Para prolongar sua vida útil, este sistema está em constante desenvolvimento.
+        hr
+        h4 Salvar orçamentos
+        p Este sistema permite guardar todas instâncias dos dados em um banco de dados 
+            |  para recuperar, atualizar, modificar ou apagar com segurança.
+        hr
+        h4 Imprimir PDF
+        p Na opção para impressão, pode-se imprimir diretamente através do diálogo de
+            |  impressão do navegador de internet bem como, salvar o orçamento em um 
+            |  arquivo PDF, o que possibilita outra forma de manter os dados.
+        hr
+        h4 Listagem e acompanhamento de situações
+        p É possível verificar o status dos orçamentos por datas, nomes, valores, 
+            |  situação etc.
+        hr
+        h4 Login e níveis de acesso
+        p Este sistema de gerenciamento de orçamentos possui segurança por login com
+            |  controle de níveis de acesso permitindo ou não ao operador utilizar 
+            |  determinadas funcionalidades.
+        hr
+        h4 Desenvolvimento constante
+        p Como não pode se tornar obsoleto a curto prazo, o sistema está sempre sendo atualizado para
+            |  melhorar suas funcionalidades. Através de feedbacks dos utilizadores e
+            |  constante análise e desenvolvimento, melhorias e correções são adicionadas
+            |  periódicamente para manter por longo período sua vida útil e funcional.
 
-    h4 Listagem e acompanhamento de situações
-    p É possível verificar o status dos orçamentos por datas, nomes, valores, 
-        |  situação etc.
-
-    h4 Login e níveis de acesso
-    p Este sistema de gerenciamento de orçamentos possui segurança por login com
-        |  controle de níveis de acesso permitindo ou não ao operador utilizar 
-        |  determinadas funcionalidades.
-
-    h4 Desenvolvimento constante
-    p Como não pode se tornar obsoleto a curto prazo, o sistema está sempre sendo atualizado para
-        |  melhorar suas funcionalidades. Através de feedbacks dos utilizadores e
-        |  constante análise e desenvolvimento, melhorias e correções são adicionadas
-        |  periódicamente para manter por longo período sua vida útil e funcional.
-
-    br
-    i Abaixo imagens do formulário de orçamentos
-    br
-    hr
-    img.w-100( src="../../../images/formulario.png", title="Imagem da tela de formulário" )
-    p 
-        i.text-sm Fig 1: parte superior do formulário de orçamentos.
-    br
-    hr     
-    img.w-100( src="../../../images/formulario1.png", title="Continuação da tela de formulário" ) 
-    p 
-        i.text-sm Fig 2: parte inferior do formulário.
+        br

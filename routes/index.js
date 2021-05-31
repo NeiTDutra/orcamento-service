@@ -29,12 +29,20 @@ router.get('/manual/criando', function(req, res, next) {
   res.render('manual_criando_orcamentos', { title: 'Manual de uso', title_manual: 'Criando orçamentos' });
 });
 
+router.get('/manual/editando', function(req, res, next) {
+  res.render('manual_editando_orcamentos', { title: 'Manual de uso', title_manual: 'Editando orçamentos' });
+});
+
 router.get('/manual/imprimindo', function(req, res, next) {
   res.render('manual_imprimindo_orcamentos', { title: 'Manual de uso', title_manual: 'Imprimindo orçamentos' });
 });
 
 router.get('/manual/apagando', function(req, res, next) {
   res.render('manual_apagando_orcamentos', { title: 'Manual de uso', title_manual: 'Apagando orçamentos' });
+});
+
+router.get('/manual/usuarios', function(req, res, next) {
+  res.render('manual_usuarios', { title: 'Manual de uso', title_manual: 'Sobre usuários' });
 });
 
 router.get('/manual/logando', function(req, res, next) {
