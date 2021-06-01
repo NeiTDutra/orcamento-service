@@ -57,25 +57,33 @@ exports.orcamento_list = (req, res, next) => {
                 });
         });
     }
-    else if (req.query.time && req.query.modo) {
+    else if (req.query.modo) {
 
-        let time = req.query.time;
+        let mes = req.query.modo === 'ultima_atualizacao'
+            && req.query.mes < 10 
+            ? req.query.mes.slice(1) 
+            : req.query.mes;
+        let dia = req.query.modo === 'ultima_atualizacao'
+            && req.query.dia < 10
+            ? req.query.dia.slice(1)
+            : req.query.dia;
+        let ano = req.query.ano;
         let campo = req.query.modo;
-        console.log(time, campo);
-        if(time < 10 && campo === 'ultima_atualizacao') {
-            time = time.slice(1);
-        }
-        let regDia = '^'+time+'/.*./*';
-        let regMes = '.*/'+time+'/.*';
-        let regAno = '.*/.*/'+time;
+        let busca = req.query.modo === 'ultima_atualizacao' ? 'Última atualização' : "Data";
         
-        Orcamento.find({ '$and': [{[campo]:{'$regex': regMes}}]}).sort({numero: - 1}).exec( (err, list_orc_sit) => {
+        diaT = dia != 0 || !undefined===dia ? +dia : '.*';
+        mesT = mes != 0 ? mes : '.*';
+        anoT = ano != 0 || !undefined===ano ? ano : '.*';
+
+        let regT = diaT+'/'+mesT+'/'+anoT;
+        
+        Orcamento.find({ '$and': [{[campo]:{'$regex': regT}}]}).sort({numero: - 1}).exec( (err, list_orc_sit) => {
 
             if(err) { return next(err); }
 
             res.render('orcamento_list',
                 { 
-                    title: 'Busca por "'+campo+'", mês "'+time+'"', 
+                    title: 'Busca por: "'+busca+'" - Data: "'+regT+'"', 
                     orcamento_list: list_orc_sit 
                 });
         });

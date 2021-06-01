@@ -3,10 +3,18 @@ div.modal.fade#searchModalDate( role="dialog" )
         div.modal-content
             div.modal-header
                 spam
-                h4.modal-title#searchModalDateLabel #[strong Busca por data (mês)]
+                h4.modal-title#searchModalDateLabel #[strong Busca por data]
             div.modal-body
                 form( role="form", method="get", action="/orcamentos/orcamentos" )
-                    select.form-select.pt-1.pb-1#time( name="time", required="true" )
+                    label.form-label(for="dia") Dia:
+                    select.form-select.pt-1.pb-1#dia( name="dia", required="true" )
+                        - var v = 0;
+                        while v <= 31
+                            option( value=an ) #{v++}
+                    br
+                    br
+                    label.form-label(for="mes") Mês: 
+                    select.form-select.pt-1.pb-1#mes( name="mes", required="true" )
                         option( value="01" ) Janeiro
                         option( value="02" ) Fevereiro
                         option( value="03" ) Março
@@ -19,6 +27,13 @@ div.modal.fade#searchModalDate( role="dialog" )
                         option( value="10" ) Outubro
                         option( value="11" ) Novembro
                         option( value="12" ) Dezembro
+                    br
+                    br
+                    label.form-label(for="ano") Ano: 
+                    select.form-select.pt-1.pb-1#ano( name="ano", required="true" )
+                        - var an = 2020;
+                        while an <= 2021
+                            option( value=an ) #{an++}
                     hr
                     div.form-check
                         input#data-lancamento.form-check-input( type="radio", name="modo", value="data", checked )
