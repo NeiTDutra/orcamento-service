@@ -2,8 +2,12 @@
 
 Online em <https://norcamentos.herokuapp.com/>
 Para acessar e testar use:
-nome: user
-senha: user@2020
+*nome:* user,
+*senha:* user@2020
+
+## Tecnologias
+
+Informações sobre tecnologias deste projeto [neste link]()
 
 ## Escopo
 
