@@ -7,7 +7,7 @@ Para acessar e testar use:
 
 ## Tecnologias
 
-Informações sobre tecnologias deste projeto [neste link]()
+Informações sobre tecnologias deste projeto [neste link](https://github.com/NeiTDutra/orcamento-service/blob/master/TECNO.md)
 
 ## Escopo
 
