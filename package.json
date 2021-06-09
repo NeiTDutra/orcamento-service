@@ -2,9 +2,9 @@
   "name": "orcamentosfree",
   "version": "0.0.0",
   "private": true,
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=orcamentosfree:* npm run devstart"
   },

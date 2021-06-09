@@ -7,6 +7,8 @@ const logger = require('morgan');
 const dotenv = require('dotenv');
 dotenv.config({path: path.join(__dirname, './config.env')});
 
+const connetctDB = require('./config/db_connection');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orcamentosRouter = require('./routes/orcamentos');
@@ -32,19 +34,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-// server deploy
-const port = process.env.PORT || 3000;
-app.listen(port, function () {
-    console.log('Site listening on port %s', port);
-});
-
-// connect engine setup
-const mongoose = require('mongoose');
-const mongoDB = process.env.MONGODB_URI;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// connect db setup
+app.set('conn', 'connetctDB');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
