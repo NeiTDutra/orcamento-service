@@ -2,6 +2,7 @@ const User = require('../models/user');
 const async = require('async');
 
 const passport = require('../config/passport');
+const passportG = require('../config/passportGoogle');
 
 
 exports.user_create_get = (req, res, next) => {
@@ -92,6 +93,24 @@ exports.user_update_post = (req, res, next) => {
     });
 };
 
+exports.user_login_get_google = [
+
+        passportG.authenticate('google', { 
+            scope: ['https://www.googleapis.com/auth/plus.login'] 
+        })
+    
+];
+
+exports.user_login_get_google_callback = [
+
+    passportG.authenticate('google', { failureRedirect: '/users/userlogin' }),
+
+        function(req, res) {
+
+            res.redirect('/orcamentos');
+        }
+];
+
 exports.user_login_get = function(req, res, next) {
 
     let path = req.header('Referer');
@@ -114,7 +133,7 @@ exports.user_login_post = [
                 let path = req.body.path;
                 res.redirect(path);
             }
-        },
+        }
 ];
 
 exports.user_logout_get = function(req, res, next) {
