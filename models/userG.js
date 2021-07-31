@@ -6,7 +6,7 @@ const UserGSchema = new Schema (
     {
         idG: { type: String },
         nomeG: { type: String },
-        statusG: { type: String }
+        status: { type: String }
     }
 );
 /*
