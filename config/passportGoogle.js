@@ -19,7 +19,9 @@ passportG.use(new GoogleStrategy({
 },
   function (accessToken, refreshToken, profile, done) {
 
-    User.findOrCreate({ id: profile.id }, function (err, user) {
+    let gName = profile._json.name;
+
+    User.findOne({ nome: gName }, function (err, user) {
       if(err) { return done('Erro:', err); }
       if(!user) { return done(null, false, { message: 'Incorrect username' }); }
       return done(null, user);
