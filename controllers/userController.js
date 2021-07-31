@@ -97,7 +97,6 @@ exports.user_login_get_google = [
 
     passportG.authenticate('google', { 
         scope: ['https://www.googleapis.com/auth/plus.login']
-        // scope: ['profile'] 
     })
     
 ];
@@ -108,7 +107,6 @@ exports.user_login_get_google_callback = [
 
         function(req, res) {
 
-            console.log(req);
             res.redirect('/orcamentos');
         }
 ];

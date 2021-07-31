@@ -12,6 +12,7 @@ passport.use(new LocalStrategy(
       if (err) { return done(err); }
       if (!user) { return done(null, false, { message: 'Incorrect username' }); }
       if (user.senha != password) { return done(null, false, { message: 'Incorret password' }); }
+      console.log(user);
       return done(null, user);
     });
   }
