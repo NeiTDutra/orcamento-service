@@ -1,9 +1,12 @@
 # Sistema para gerenciar orçamentos
 
+*Lançamento V-1.0.1 - Autenticação com Google OAuth2*
+
 Online em <https://norcamentos.herokuapp.com/>
 Para acessar e testar use:
-*nome:* user,
-*senha:* user@2020
+
+- *nome:* user
+- *senha:* user@2020
 
 ## Tecnologias
 
