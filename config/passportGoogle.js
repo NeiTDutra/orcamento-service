@@ -15,7 +15,7 @@ const UserG = require('../models/userG');
 passportG.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "/users/userloging/callback"
+  callbackURL: process.env.URI_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
 
