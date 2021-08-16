@@ -1,9 +1,14 @@
 # Sistema para gerenciar orçamentos
 
+:rocket: :rocket: ***Lançamento V-1.0.1 - Autenticação com Google OAuth2*** :artificial_satellite: :artificial_satellite:
+
+Projeto sob os termos da licença [MIT](https://github.com/NeiTDutra/orcamento-service/blob/master/LICENSE)
+
 Online em <https://norcamentos.herokuapp.com/>
 Para acessar e testar use:
-*nome:* user,
-*senha:* user@2020
+
+- *nome:* user
+- *senha:* user@2020
 
 ## Tecnologias
 

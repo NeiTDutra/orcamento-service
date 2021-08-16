@@ -13,7 +13,7 @@ block orcamento-list
           h4 Orçamento
         td
           b Número:
-          input#numero(type='text', placeholder='Número (00000)', name='numero', size='6', required='true', value=(undefined===orcamento ? numero : orcamento.numero) )
+          input#numero(type='text', placeholder='Número (00000)', name='numero', size='6', required='true', value=(undefined===orcamento ? numero : orcamento.numero) readonly )
         td
           b Data:
           - if(undefined===orcamento){
@@ -42,15 +42,15 @@ block orcamento-list
             tr.table-dark
               th Nome:
                 td
-                  input#nome(type='text', placeholder='Nome da empresa', name='empresa_nome', required='true' value=(undefined===orcamento ? 'NServiços' : orcamento.empresa[0].nome) )
+                  input#nome(type='text', placeholder='Nome da empresa', name='empresa_nome', required='true' value=(undefined===orcamento ? '' : orcamento.empresa[0].nome) )
             tr.table-dark
               th Id/CNPJ:
                 td
-                  input#cnpj(type='text', placeholder='CNPJ da empresa', name='empresa_cnpj', required='true', value=(undefined===orcamento ? '22.552.033/0001-87' : orcamento.empresa[0].cnpj))
+                  input#cnpj(type='text', placeholder='CNPJ da empresa', name='empresa_cnpj', required='true', value=(undefined===orcamento ? '' : orcamento.empresa[0].cnpj))
             tr.table-dark
               th Fone:
                 td
-                  input#fone(type='text', placeholder='Fone da empresa', name='empresa_fone', required='true', value=(undefined===orcamento ? '51 99253 7360' : orcamento.empresa[0].fone), onkeyup="mascara(this, '## ##### ####')", maxlength="13")
+                  input#fone(type='text', placeholder='Fone da empresa', name='empresa_fone', required='true', value=(undefined===orcamento ? '' : orcamento.empresa[0].fone), onkeyup="mascara(this, '## ##### ####')", maxlength="13")
         td 
           table#tbl_cli
             tr.table-dark
@@ -151,7 +151,7 @@ block orcamento-list
         th.w-20 Valor Total Orçamento
       tr
         th
-          b Valores:
+          b Valores totais:
         td
           input#v_t_servico(type='text', placeholder='V. tl. serviço', name='v_t_servico', value=(undefined===orcamento ? '' : orcamento.v_t_servico))
         td

@@ -4,8 +4,9 @@ div.position-fixed.wdf-94.mt-0.pt-0
             h1.t-shadow-black #[strong.text-primary N] Serviços 
         div.col-sm-4.text-right.pt-2
             h2.t-shadow-black Gerenciador de orçamentos 
-        div.col-sm-2.text-left.pt-4
-            p.t-shadow-black.text-secondary V.- 1.0
+        div.col-sm-2.text-left
+            p.t-shadow-black.text-secondary V.- 1.0.1 
+            p.t-shadow-black.text-danger (em desenvolvimento)
         - if(mod==='open'){
             script.
                 $('#loginModal').modal('show');
@@ -20,7 +21,7 @@ div.position-fixed.wdf-94.mt-0.pt-0
         - }
         - if(loged){ 
             div.col-sm-2.bg-secondary.text-center.pt-3.bshadow-black
-                i User: #[strong.text-white #{loged.nome}] 
+                i User: #[strong.text-white #{loged.nome} #{loged.nomeG}] 
             div.col-sm-1.bg-secondary.text-center.pt-3.bshadow-black
                 a.btn.btn-primary.btn-sm.bshadow-black( type='button', href='/users/userlogout' ) Logout 
         - }else{ 
