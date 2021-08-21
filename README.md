@@ -1,6 +1,6 @@
 # Sistema para gerenciar orçamentos
 
-:rocket: :rocket: ***Lançamento V-1.0.1 - Autenticação com Google OAuth2*** :artificial_satellite: :artificial_satellite:
+:rocket: :rocket: ***Lançamento V-1.1.1 - Autenticação com Google OAuth2*** :artificial_satellite: :artificial_satellite:
 
 Projeto sob os termos da licença [MIT](https://github.com/NeiTDutra/orcamento-service/blob/master/LICENSE)
 
