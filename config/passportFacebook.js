@@ -1,5 +1,5 @@
 const passportF = require('passport');
-// passport com passport-google-oauth
+// passport com passport-facebook
 var FacebookStrategy = require('passport-facebook');
 
 const path = require('path');
@@ -17,17 +17,19 @@ passportF.use(new FacebookStrategy({
     function(accessToken, refreshToken, profile, done) {
 
         let fId = profile.id;
-        let fName = profile.name;
+        let fName = profile.displayName;
     
     UserF.findOne({ idF: fId }, function(err, user) {
 
         if(err) { return done('Erro:', err); }
         if(!user) { 
+
             new UserF({
               idF: fId,
               nomeF: fName,
               status: 'facebook'
             }).save();
+
             return done(null, user); 
         }
 
