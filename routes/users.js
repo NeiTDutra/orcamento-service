@@ -25,6 +25,10 @@ router.get('/userloging', user_controller.user_login_get_google);
 
 router.get('/userloging/callback', user_controller.user_login_get_google_callback);
 
+router.get('/userloginf', user_controller.user_login_get_facebook);
+
+router.get('/userloginf/callback', user_controller.user_login_get_facebook_callback);
+
 router.post('/userlogin', auth.parseForm, auth.csrfProtection, user_controller.user_login_post);
 
 router.get('/userlogout', user_controller.user_logout_get);

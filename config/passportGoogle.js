@@ -23,15 +23,19 @@ passportG.use(new GoogleStrategy({
     let gName = profile._json.name;
 
     UserG.findOne({ idG: gId }, function (err, user) {
+
       if(err) { return done('Erro:', err); }
       if(!user) { 
+
         new UserG({
           idG: gId,
           nomeG: gName,
           status: 'google'
         }).save();
+
         return done(null, user); 
       }
+
       console.log(user);
       return done(null, user);
     });

@@ -15,4 +15,4 @@ UserGSchema.virtual('url').get(function () {
 });
 */
 
-module.exports = mongoose.model('UserG', UserGSchema);
+module.exports = mongoose.model('UserG', UserGSchema);  

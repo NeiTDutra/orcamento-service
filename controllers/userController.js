@@ -3,6 +3,7 @@ const async = require('async');
 
 const passport = require('../config/passport');
 const passportG = require('../config/passportGoogle');
+const passportF = require('../config/passportFacebook');
 
 
 exports.user_create_get = (req, res, next) => {
@@ -104,6 +105,24 @@ exports.user_login_get_google = [
 exports.user_login_get_google_callback = [
 
     passportG.authenticate('google', { failureRedirect: '/users/userlogin' }),
+
+        function(req, res) {
+
+            res.redirect('/orcamentos');
+        }
+];
+
+exports.user_login_get_facebook = [
+
+    passportF.authenticate('facebook', { 
+        scope: ['public_profile', 'email']
+    })
+    
+];
+
+exports.user_login_get_facebook_callback = [
+
+    passportF.authenticate('facebook', { failureRedirect: '/users/userlogin' }),
 
         function(req, res) {
 
