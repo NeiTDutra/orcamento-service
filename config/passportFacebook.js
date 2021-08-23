@@ -12,7 +12,7 @@ passportF.use(new FacebookStrategy({
 
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.DEV_URI_CALLBACK_FACEBOOK
+    callbackURL: process.env.URI_CALLBACK_FACEBOOK
     },
     function(accessToken, refreshToken, profile, done) {
 

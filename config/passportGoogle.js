@@ -15,7 +15,7 @@ const UserSocial = require('../models/userSocial');
 passportG.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.DEV_URI_CALLBACK
+  callbackURL: process.env.URI_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
 
