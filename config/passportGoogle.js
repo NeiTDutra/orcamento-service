@@ -6,7 +6,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({ path: path.join(__dirname, './config.env') });
 
-const UserG = require('../models/userG');
+const UserSocial = require('../models/userSocial');
 
 // Use the GoogleStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
@@ -15,21 +15,21 @@ const UserG = require('../models/userG');
 passportG.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.URI_CALLBACK
+  callbackURL: process.env.DEV_URI_CALLBACK
 },
   function (accessToken, refreshToken, profile, done) {
 
     let gId = profile._json.sub;
     let gName = profile._json.name;
 
-    UserG.findOne({ idG: gId }, function (err, user) {
+    UserSocial.findOne({ id: gId }, function (err, user) {
 
       if(err) { return done('Erro:', err); }
       if(!user) { 
 
-        new UserG({
-          idG: gId,
-          nomeG: gName,
+        new UserSocial({
+          id: gId,
+          nome: gName,
           status: 'google'
         }).save();
 
