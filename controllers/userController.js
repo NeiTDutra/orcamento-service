@@ -8,7 +8,7 @@ const passportF = require('../config/passportFacebook');
 
 exports.user_create_get = (req, res, next) => {
 
-    res.render('user_form', { title: 'Novo usuário', csrfToken: req.csrfToken() });
+    res.render('./user/user_form', { title: 'Novo usuário', csrfToken: req.csrfToken() });
 };
 
 exports.user_create_post = (req, res, next) => {
@@ -35,7 +35,7 @@ exports.user_list = (req, res, next) => {
 
         if(err) { return next(err); }
 
-        res.render('user_list', { title: 'Lista de usuários', error:err, user: users });
+        res.render('./user/user_list', { title: 'Lista de usuários', error:err, user: users });
     });
 };
 
@@ -45,7 +45,7 @@ exports.user_detail = (req, res, next) => {
 
         if(err) { return next(err) }
 
-        res.render('user_detail', { title: 'Detalhe de usuário', user_detail: detail_user, csrfToken: req.csrfToken() });
+        res.render('./user/user_detail', { title: 'Detalhe de usuário', user_detail: detail_user, csrfToken: req.csrfToken() });
     })
 };
 
@@ -72,7 +72,7 @@ exports.user_update_get = (req, res,next) => {
             return next(err);
         }
 
-        res.render('user_form', { title: 'Update user', user: user, csrfToken: req.csrfToken() });
+        res.render('./user/user_form', { title: 'Update user', user: user, csrfToken: req.csrfToken() });
     });
 };
 
@@ -101,7 +101,7 @@ exports.user_login_get = function(req, res, next) {
     console.log(path);
     // value send for template for open the modal of login 
     const mod = 'open';
-    res.render('user_index', { title: 'Login Required', path: path, mod: mod, csrfToken: req.csrfToken() });
+    res.render('./user/user_index', { title: 'Login Required', path: path, mod: mod, csrfToken: req.csrfToken() });
 }; 
 
 // Login with google routes

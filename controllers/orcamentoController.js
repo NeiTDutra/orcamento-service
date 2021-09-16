@@ -19,7 +19,7 @@ exports.index = (req, res, next) => {
 
             if(err) { return next(err); }
 
-            res.render('orcamento_index_initial',
+            res.render('./orcamento/orcamento_index_initial',
                 { 
                     title: 'Estatísticas', 
                     data: results 
@@ -36,7 +36,7 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
     
-            res.render('orcamento_list',
+            res.render('./orcamento/orcamento_list',
                 { 
                     title: 'Busca por nome', 
                     orcamento_list: list_orc_seg 
@@ -50,7 +50,7 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
 
-            res.render('orcamento_list',
+            res.render('./orcamento/orcamento_list',
                 { 
                     title: 'Situação "'+sit+'"', 
                     orcamento_list: list_orc_sit 
@@ -81,7 +81,7 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
 
-            res.render('orcamento_list',
+            res.render('./orcamento/orcamento_list',
                 { 
                     title: 'Busca por: "'+busca+'" - Data: "'+regT+'"', 
                     orcamento_list: list_orc_sit 
@@ -94,7 +94,7 @@ exports.orcamento_list = (req, res, next) => {
 
             if(err) { return next(err); }
             
-            res.render('orcamento_list',
+            res.render('./orcamento/orcamento_list',
                 { 
                     title: 'Todos orçamentos', 
                     orcamento_list: list_orc 
@@ -109,7 +109,7 @@ exports.orcamento_detail = (req, res, next) => {
 
         if(err) { return next(err); }
 
-        res.render('orcamento_detail',
+        res.render('./orcamento/orcamento_detail',
             { 
                 title: 'Detalhe do orçamento', 
                 orcamento_detail: detail_orc, 
@@ -133,7 +133,7 @@ exports.orcamento_create_get = (req, res, next) => {
             var n = num[0].numero + 1;
         }
         
-        res.render('orcamento_form',
+        res.render('./orcamento/orcamento_form',
             { 
                 title: 'Novo orçamento', 
                 numero: n, 
@@ -216,7 +216,7 @@ exports.orcamento_update_get = (req, res, next) => {
             err.status = 404;
             return next(err);
         }
-        res.render('orcamento_form',
+        res.render('./orcamento/orcamento_form',
             { 
                 title: 'Orçamento', 
                 orcamento: orcamento, 

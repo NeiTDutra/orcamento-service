@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 
 exports.contato_get = (req, res, next) => {
 
-    res.render('site_contato', { title: 'Contato', csrfToken: req.csrfToken() });
+    res.render('./site/site_contato', { title: 'Contato', csrfToken: req.csrfToken() });
 };
 
 exports.contato_post = (req, res, next) => {
@@ -36,7 +36,7 @@ exports.contato_post = (req, res, next) => {
 
         if(err) { return next(err); }
 
-        res.render('site_contato',
+        res.render('./site/site_contato',
             { 
                 title: 'Contato', 
                 message: c_name+'. Sua mensagem foi enviada! Sua resposta será encaminhada o mais breve possível.',

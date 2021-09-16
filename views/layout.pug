@@ -36,32 +36,32 @@ html(lang="pt-br")
     div#container.container-fluid.mt-0.pt-0
     
       <!--START ALERT LOGOUT MODAL-->
-      include alert_logout_modal.pug
+      include ./layout-includes/alert_logout_modal.pug
       
       <!--START LOGIN MODAL-->
-      include login_modal.pug
+      include ./layout-includes/login_modal.pug
 
       <!--START SEARCH MODAL BY NAME-->
-      include search_by_name_modal.pug
+      include ./layout-includes/search_by_name_modal.pug
       
       <!--START SEARCH MODAL BY SITUATION-->
-      include search_by_situation_modal.pug
+      include ./layout-includes/search_by_situation_modal.pug
       
       <!--START SEARCH MODAL BY DATE-->
-      include search_by_date_modal.pug
+      include ./layout-includes/search_by_date_modal.pug
       
       <!--START HEADER-->
-      include header.pug
+      include ./layout-includes/header.pug
       
       hr
       div.row.pdg-top.pb-1.h-100
 
         <!--START MENU LEFT-->
-        include menu_left.pug
+        include ./layout-includes/menu_left.pug
         
-        <!--START ALL CONTENT-->
+        <!--START ALL CONTENTS-->
         block content
 
   <!--START FOOTER-->
-  include footer.pug
+  include ./layout-includes/footer.pug
   
