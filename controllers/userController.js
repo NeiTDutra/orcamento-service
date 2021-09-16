@@ -4,6 +4,7 @@ const async = require('async');
 const passport = require('../config/passport');
 const passportG = require('../config/passportGoogle');
 const passportF = require('../config/passportFacebook');
+const userSocial = require('../models/userSocial');
 
 
 exports.user_create_get = (req, res, next) => {
@@ -31,12 +32,27 @@ exports.user_create_post = (req, res, next) => {
 
 exports.user_list = (req, res, next) => {
 
-    User.find().exec( (err, users) => {
+    async.parallel({
+
+        user_local: (callback) => {
+            User.find().exec(callback);
+        },
+        user_social: (callback) => {
+            userSocial.find().exec(callback);
+        }, 
+    }, function (err, results) {
+
+            if(err) { return next(err); }
+
+            res.render('./user/user_list', { title: 'Lista de usuários (local)', titleS: 'Lista de usuários (social)', error: err, userData: results });
+    });
+
+    /*User.find().exec( (err, users) => {
 
         if(err) { return next(err); }
 
         res.render('./user/user_list', { title: 'Lista de usuários', error:err, user: users });
-    });
+    });*/
 };
 
 exports.user_detail = (req, res, next) => {

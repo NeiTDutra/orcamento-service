@@ -24,7 +24,7 @@ exports.index = (req, res, next) => {
                     title: 'Estatísticas', 
                     data: results 
                 });
-        });
+    });
 };
 
 exports.orcamento_list = (req, res, next) => {

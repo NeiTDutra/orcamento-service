@@ -9,10 +9,10 @@ const UserSocialSchema = new Schema (
         status: { type: String }
     }
 );
-/*
+
 UserSocialSchema.virtual('url').get(function () {
     return '/users/user/' + this._id;
 });
-*/
+
 
 module.exports = mongoose.model('UserSocial', UserSocialSchema);

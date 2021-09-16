@@ -4,16 +4,15 @@ block user-list
 
     script.
         $(document).ready(function(){
-        $('table tr').click(function(){
+        $('#local tr').click(function(){
             window.location = $(this).data('url');
             return false;
             });
         });
 
     h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{title}]
-    hr
 
-    table.table
+    table.table#local
             thead.thead-dark
                 tr
                     th(scope="col") Nome
@@ -21,7 +20,7 @@ block user-list
                     th(scope="col") Status
 
             tbody
-                each usuario in user
+                each usuario in userData.user_local
                     tr(data-url=usuario.url, style="cursor:pointer", onmouseover="this.style.background='grey'", onmouseout="this.style.background='none'")
                         
                         td #{ usuario.nome }
@@ -33,4 +32,24 @@ block user-list
 
                         li There are no user.
 
+    hr
+    h3.bg-warning.pt-2.pb-2.pl-2 #[strong #{titleS}]
+
+    table.table
+            thead.thead-dark
+                tr
+                    th(scope="col") Nome
+                    th(scope="col") Status
+
+            tbody
+                each usuario in userData.user_social
+                    tr(data-url=usuario.url, style="cursor:pointer", onmouseover="this.style.background='grey'", onmouseout="this.style.background='none'")
+                        
+                        td #{ usuario.nome }
+                        td #{ usuario.status }
+
+                else
+                    ul.list-unstyled.ml-3
+
+                        li There are no user.
     
