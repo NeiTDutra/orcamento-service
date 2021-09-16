@@ -19,8 +19,10 @@ div.position-fixed.wdf-94.mt-0.pt-0
                 });
         - }
         - if(loged){ 
-            div.col-sm-2.bg-secondary.text-center.pt-3.bshadow-black
-                i User: #[strong.text-white #{loged.nome} #{loged.nomeG}] 
+            div.col-sm-2.bg-secondary.text-left.pt-1.bshadow-black
+                i User: #[strong.text-white #{loged.nome} #{loged.nomeG} #{loged.nomeF}]
+                br
+                i Status: #[strong.text-white #{loged.status}]
             div.col-sm-1.bg-secondary.text-center.pt-3.bshadow-black
                 a.btn.btn-primary.btn-sm.bshadow-black( type='button', href='/users/userlogout' ) Logout 
         - }else{ 
@@ -30,3 +32,4 @@ div.position-fixed.wdf-94.mt-0.pt-0
                 a.btn.btn-primary.btn-sm.bshadow-black( type='button', href='/users/userlogin' ) Login 
         - }
         div.col-sm-1
+        

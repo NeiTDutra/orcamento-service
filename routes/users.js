@@ -4,7 +4,6 @@ const router = express.Router();
 const user_controller = require('../controllers/userController');
 let auth = require('../controllers/authController');
 
-/* GET users listing. */
 router.get( '/user/create', auth.csrfProtection, auth.IsAuthenticated, user_controller.user_create_get );
 
 router.post( '/user/create', auth.parseForm, auth.csrfProtection, auth.IsAuthenticated, user_controller.user_create_post );
@@ -21,10 +20,17 @@ router.post( '/user/:id/update', auth.parseForm, auth.csrfProtection, auth.IsAut
 
 router.get('/userlogin', auth.csrfProtection, user_controller.user_login_get);
 
+// Login with google account - passport-google-oauth
 router.get('/userloging', user_controller.user_login_get_google);
 
 router.get('/userloging/callback', user_controller.user_login_get_google_callback);
 
+// Login with facebook accout - passport-facebook
+router.get('/userloginf', user_controller.user_login_get_facebook);
+
+router.get('/userloginf/callback', user_controller.user_login_get_facebook_callback);
+
+// Login with local account - passport-local
 router.post('/userlogin', auth.parseForm, auth.csrfProtection, user_controller.user_login_post);
 
 router.get('/userlogout', user_controller.user_logout_get);

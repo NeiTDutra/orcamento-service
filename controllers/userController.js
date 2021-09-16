@@ -3,6 +3,7 @@ const async = require('async');
 
 const passport = require('../config/passport');
 const passportG = require('../config/passportGoogle');
+const passportF = require('../config/passportFacebook');
 
 
 exports.user_create_get = (req, res, next) => {
@@ -93,6 +94,17 @@ exports.user_update_post = (req, res, next) => {
     });
 };
 
+// Login modal form
+exports.user_login_get = function(req, res, next) {
+
+    let path = req.header('Referer');
+    console.log(path);
+    // value send for template for open the modal of login 
+    const mod = 'open';
+    res.render('user_index', { title: 'Login Required', path: path, mod: mod, csrfToken: req.csrfToken() });
+}; 
+
+// Login with google routes
 exports.user_login_get_google = [
 
     passportG.authenticate('google', { 
@@ -111,15 +123,26 @@ exports.user_login_get_google_callback = [
         }
 ];
 
-exports.user_login_get = function(req, res, next) {
+// Login with facebook routes
+exports.user_login_get_facebook = [
 
-    let path = req.header('Referer');
-    console.log(path);
-    // value send for template for open the modal of login 
-    const mod = 'open';
-    res.render('user_index', { title: 'Login Required', path: path, mod: mod, csrfToken: req.csrfToken() });
-}; 
+    passportF.authenticate('facebook', { 
+        scope: ['public_profile', 'email']
+    })
+    
+];
 
+exports.user_login_get_facebook_callback = [
+
+    passportF.authenticate('facebook', { failureRedirect: '/users/userlogin' }),
+
+        function(req, res) {
+
+            res.redirect('/orcamentos');
+        }
+];
+
+// Login with local route
 exports.user_login_post = [
 
     passport.authenticate('local', { failureRedirect: '/users/userlogin' } ),
@@ -136,6 +159,7 @@ exports.user_login_post = [
         }
 ];
 
+// Logout
 exports.user_logout_get = function(req, res, next) {
 
     req.logout();
