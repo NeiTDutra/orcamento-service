@@ -34,6 +34,10 @@ input, select {
 #tbl_title {
   width: 75%;
 }
+#tbl_recibo {
+  width: 75%;
+  margin: 0;
+}
 #tbl_title td, #tbl_title input, #tbl_title select {
   text-align: center;
   vertical-align: middle;
@@ -51,6 +55,10 @@ input, select {
 }
 #tbl_cli {
   width: 100%;
+}
+.th8 {
+  width: 20%;
+  border-bottom: 1px solid grey;
 }
 .th6 {
   width: 10%;

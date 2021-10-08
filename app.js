@@ -13,8 +13,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orcamentosRouter = require('./routes/orcamentos');
 
-// const apiOrcamentoRouter = require('./api/routes/apiOrcamentos');
-
 const app = express();
 
 const passport = require('passport');
@@ -23,7 +21,8 @@ const expressSession = require('express-session');
 app.use(expressSession({
   secret: process.env.EXPRESS_SECRET,
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { maxAge: 30 * 60 * 1000 }
 }));
 
 app.use(passport.initialize());
