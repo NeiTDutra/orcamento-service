@@ -1,9 +1,8 @@
 const Orcamento = require('../models/orcamento');
 const orcamentoRepository = require('../repository/orcamentoRepository');
-const async = require('async');
 
 
-exports.index = async (req, res, next) => {
+exports.index = (req, res, next) => {
 
     const call = orcamentoRepository.orcamentoStatistics();
     
