@@ -42,13 +42,13 @@ block orcamento-list
         table.table.table-sm
             tbody
                 tr
-                    td.w-40 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
+                    td#pdf-nome.w-40 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
                     td.w-20 #[strong Fone: ] #{ orcamento_detail.cliente[0].fone }
                     td.w-40 #[strong Email: ] #{ orcamento_detail.cliente[0].email }
                 tr
-                    td.w-40 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
-                    td.w-20 #[strong N°: ] #{ orcamento_detail.cliente[0].numero }
-                    td.w-40 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
+                    td#pdf-rua.w-40 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
+                    td#pdf-numero.w-20 #[strong N°: ] #{ orcamento_detail.cliente[0].numero }
+                    td#pdf-cidade.w-40 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
 
         h4 Serviço: 
         table.table.table-sm
@@ -101,9 +101,39 @@ block orcamento-list
         h4 Obs.:
         p #[strong Obs.: ] 
         pre #{ orcamento_detail.obs }
-
+        br
         hr
-
+        br
+        table.table.table-sm.w-75.t-top.p-0.m-0 
+            tbody 
+                tr 
+                    td
+                        h4 RECIBO
+                    td.w-30 #[strong VALOR: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].valor }
+        table.table.table-sm.w-75.t-body.p-0.m-0
+            tbody
+                tr 
+                    td #[strong Recebi de: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].nome_cliente}
+                tr 
+                    td #[strong A quantia de: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].valor_escrito }
+                tr 
+                    td #[strong Referente ao(s) serviço(s) de instalação descrito(s) acima.]
+        table.table.table-sm.w-75.t-body.p-0.m-0
+            tbody
+                tr 
+                    td #[strong Local e Data: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].local_data }
+        table.table.table-sm.w-75.t-bottom.p-0.m-0
+            tbody
+                tr 
+                    td.w-50 #[strong Emitente: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].emitente }
+                    td #[strong Assinatura: ] _____________________
+                tr 
+                    td #[strong CPF: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].cpf }
+                    td #[strong CNPJ: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].cnpj }
+        br
+        br
+        hr
+        br
     p
     - if(loged && loged.status==='master'){
         button.btn.btn-sm.btn-danger.noprint.bshadow(type='button', data-toggle='modal', data-target='#Modal', onMouseUp='this.blur();') Remover

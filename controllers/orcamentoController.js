@@ -1,30 +1,20 @@
 const Orcamento = require('../models/orcamento');
+const orcamentoRepository = require('../repository/orcamentoRepository');
 const async = require('async');
 
 
-exports.index = (req, res, next) => {
+exports.index = async (req, res, next) => {
 
-    async.parallel({
-
-        orcamento_count: (callback) => {
-            Orcamento.countDocuments(callback);
-        },
-        orcamento_sit_abe: (callback) => {
-            Orcamento.countDocuments({situacao:'aberto'}, callback);
-        },
-        orcamento_sit_arq: (callback) => {
-            Orcamento.countDocuments({situacao:'arquivado'}, callback);
-        }, 
-    }, function (err, results) {
-
-            if(err) { return next(err); }
-
-            res.render('./orcamento/orcamento_index_initial',
-                { 
-                    title: 'Estatísticas', 
-                    data: results 
-                });
-    });
+    const call = orcamentoRepository.orcamentoStatistics();
+    
+    console.log('Rev: '+call);
+    res.render('./orcamento/orcamento_index_initial',
+            { 
+                title: 'Estatísticas', 
+                data: call 
+            });
+    // return call;
+    
 };
 
 exports.orcamento_list = (req, res, next) => {
@@ -193,7 +183,18 @@ exports.orcamento_create_post = (req, res, next) => {
         v_t_servico: req.body.v_t_servico,
         v_t_material: req.body.v_t_material,
         v_t_orcamento: req.body.v_t_orcamento,
-        obs: req.body.obs
+        obs: req.body.obs,
+        recibo: [
+            {
+                local_data: req.body.local_data,
+                nome_cliente: req.body.nome_cliente,
+                valor: req.body.valor,
+                valor_escrito: req.body.valor_escrito,
+                emitente: req.body.emitente,
+                cpf: req.body.cpf_recibo,
+                cnpj: req.body.cnpj_recibo
+            }
+        ]
         }
     );
     orcamento.save( function (err) {
@@ -275,7 +276,18 @@ exports.orcamento_update_post = (req, res, next) => {
         v_t_servico: req.body.v_t_servico,
         v_t_material: req.body.v_t_material,
         v_t_orcamento: req.body.v_t_orcamento,
-        obs: req.body.obs
+        obs: req.body.obs,
+        recibo: [
+            {
+                local_data: req.body.local_data,
+                nome_cliente: req.body.nome_cliente,
+                valor: req.body.valor,
+                valor_escrito: req.body.valor_escrito,
+                emitente: req.body.emitente,
+                cpf: req.body.cpf_recibo,
+                cnpj: req.body.cnpj_recibo
+            }
+        ]
         };
 
     Orcamento.findByIdAndUpdate(req.params.id, orcamento, {}, function (err, orcamento) {
