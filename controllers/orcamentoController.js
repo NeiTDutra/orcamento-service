@@ -8,12 +8,12 @@ exports.index = async (req, res, next) => {
     const call = orcamentoRepository.orcamentoStatistics();
     
     console.log('Rev: '+call);
-    res.render('./orcamento/orcamento_index_initial',
+    /*res.render('./orcamento/orcamento_index_initial',
             { 
                 title: 'Estatísticas', 
                 data: call 
-            });
-    // return call;
+            });*/
+    return call;
     
 };
 

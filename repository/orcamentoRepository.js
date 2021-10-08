@@ -22,12 +22,12 @@ exports.orcamentoStatistics = (req, res, next) => {
         console.log(call);
 
         // return [call.orcamento_count, call.orcamento_sit_abe, call.orcamento_sit_arq];
-        return call;
+        // return call;
 
-        /*res.render('./orcamento/orcamento_index_initial',
+        res.render('./orcamento/orcamento_index_initial',
             { 
                 title: 'Estatísticas', 
                 data: call 
-            });*/
+            });
     });
 };
