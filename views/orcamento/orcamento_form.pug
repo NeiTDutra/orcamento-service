@@ -175,7 +175,7 @@ block orcamento-list
         td.w-15
           b VALOR:
         td
-          input#valor.w-50(type='text', name='valor', onkeyup="k(this)",  value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].valor) )
+          input#valor.w-50(type='text', name='valor', onkeyup="k(this)",  value=(!orcamento || !orcamento.recibo[0] ? '' : orcamento.recibo[0].valor) )
     
     table#tbl_recibo.table.tablel-sm
       tr.table-dark
@@ -193,7 +193,7 @@ block orcamento-list
       tr.table-dark
         th.th8 Local e Data:
           td
-            input#data(type='text', name='local_data', value=value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].local_data) )
+            input#data(type='text', name='local_data', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].local_data) )
     table#tbl_recibo.table.tablel-sm
       tr.table-dark
         th.th6 Emitente:

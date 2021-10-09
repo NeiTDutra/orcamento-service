@@ -15,8 +15,17 @@ block orcamento-list
             .w-20 {
                 width: 20%;
             }
+            .w-25 {
+                width: 25%;
+            }
+            .w-30 {
+                width: 30%;
+            }
             .w-40 {
                 width: 40%;
+            }
+            .w-50 {
+                width: 50%;
             }
             .w-15 {
                 width: 15%;
@@ -25,31 +34,31 @@ block orcamento-list
         table#tbl_head_print.table.table-sm 
             tbody
                 tr
-                    td.w-20 #[strong N°: ] #{ orcamento_detail.numero }
-                    td.w-20 #[strong Data: ] #{ orcamento_detail.data }
-                    td.w-30.noprint #[strong Ultima atualização:] #{ orcamento_detail.ultima_atualizacao }
-                    td.w-30 #[strong Situação: ] #{ orcamento_detail.situacao }
-
+                    td.w-15 #[strong N°: ] #{ orcamento_detail.numero }
+                    td.w-30 #[strong Data: ] #{ orcamento_detail.data }
+                    td.w-40 #[strong Ultima at.:] #{ orcamento_detail.ultima_atualizacao }
+                    td.w-15.noprint #[strong Situação: ] #{ orcamento_detail.situacao }
+        hr
         h4 Empresa:
         table.table.table-sm
             tbody
                 tr
-                    td.w-40 #[strong Nome: ] #{ orcamento_detail.empresa[0].nome }
-                    td.w-20 #[strong Fone: ] #{ orcamento_detail.empresa[0].fone }
-                    td.w-40 #[strong CNPJ: ] #{ orcamento_detail.empresa[0].cnpj }
+                    td.w-30 #[strong Nome: ] #{ orcamento_detail.empresa[0].nome }
+                    td.w-40 #[strong Fone: ] #{ orcamento_detail.empresa[0].fone }
+                    td.w-30 #[strong CNPJ: ] #{ orcamento_detail.empresa[0].cnpj }
 
         h4 Cliente:
         table.table.table-sm
             tbody
                 tr
-                    td#pdf-nome.w-40 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
-                    td.w-20 #[strong Fone: ] #{ orcamento_detail.cliente[0].fone }
+                    td#pdf-nome.w-30 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
+                    td.w-30 #[strong Fone: ] #{ orcamento_detail.cliente[0].fone }
                     td.w-40 #[strong Email: ] #{ orcamento_detail.cliente[0].email }
                 tr
-                    td#pdf-rua.w-40 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
+                    td#pdf-rua.w-30 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
                     td#pdf-numero.w-20 #[strong N°: ] #{ orcamento_detail.cliente[0].numero }
-                    td#pdf-cidade.w-40 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
-
+                    td#pdf-cidade.w-50 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
+        hr
         h4 Serviço: 
         table.table.table-sm
             thead.thead-light
@@ -94,45 +103,42 @@ block orcamento-list
                     th.w-20 #[strong V. total do orçamento]
                 tr
                     td.w-40 Valores totais:
-                    td #{ orcamento_detail.v_t_servico }
-                    td #{ orcamento_detail.v_t_material }
-                    td #{ orcamento_detail.v_t_orcamento }
-
-        h4 Obs.:
-        p #[strong Obs.: ] 
-        pre #{ orcamento_detail.obs }
+                    td.overline #[strong #{ orcamento_detail.v_t_servico }]
+                    td.overline #[strong #{ orcamento_detail.v_t_material }]
+                    td.overline #[strong #{ orcamento_detail.v_t_orcamento }]
+        br
+        p #[strong Obs.: ]  
+        p #{ orcamento_detail.obs }
         br
         hr
-        br
-        table.table.table-sm.w-75.t-top.p-0.m-0 
+        table.table.table-sm.w-75.t-top.m-0.bg-light 
             tbody 
                 tr 
                     td
                         h4 RECIBO
-                    td.w-30 #[strong VALOR: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].valor }
-        table.table.table-sm.w-75.t-body.p-0.m-0
+                    td.w-50 #[strong VALOR: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].valor }
+        table.table.table-sm.w-75.t-body.m-0
             tbody
                 tr 
-                    td #[strong Recebi de: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].nome_cliente}
+                    td.pt-3 #[strong Recebi de: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].nome_cliente}
                 tr 
                     td #[strong A quantia de: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].valor_escrito }
                 tr 
                     td #[strong Referente ao(s) serviço(s) de instalação descrito(s) acima.]
-        table.table.table-sm.w-75.t-body.p-0.m-0
+        table.table.table-sm.w-75.t-body.m-0
             tbody
                 tr 
-                    td #[strong Local e Data: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].local_data }
-        table.table.table-sm.w-75.t-bottom.p-0.m-0
+                    td.pt-5 #[strong Local e Data: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].local_data }
+        table.table.table-sm.w-75.t-bottom
             tbody
                 tr 
                     td.w-50 #[strong Emitente: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].emitente }
-                    td #[strong Assinatura: ] _____________________
-                tr 
                     td #[strong CPF: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].cpf }
-                    td #[strong CNPJ: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].cnpj }
+                tr
+                    td.pb-3 #[strong Ass.: ] _____________________
+                    td.pb-3 #[strong CNPJ: ] #{ undefined===orcamento_detail.recibo[0] ? '' : orcamento_detail.recibo[0].cnpj }
+            
         br
-        br
-        hr
         br
     p
     - if(loged && loged.status==='master'){
