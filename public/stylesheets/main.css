@@ -43,14 +43,26 @@ input, select {
   border-left: 2px solid #2F4F4F;
   border-right: 2px solid #2F4F4F;
 }
+.t-top td {
+  padding: 2% 0 0 5%;
+}
 .t-body {
   border-left: 2px solid #2F4F4F;
   border-right: 2px solid #2F4F4F;
+}
+.t-body td {
+  padding: 0 0 0 5%;
+}
+.overline {
+  text-decoration: overline;
 }
 .t-bottom {
   border-bottom: 2px solid #2F4F4F;
   border-left: 2px solid #2F4F4F;
   border-right: 2px solid #2F4F4F;
+}
+.t-bottom td {
+  padding-left: 5%;
 }
 .t-border td {
   padding-left: 5%;

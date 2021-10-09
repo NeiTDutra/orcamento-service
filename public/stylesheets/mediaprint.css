@@ -1,5 +1,9 @@
-body {
-  background-color: white;
+#ctner {
+  background-color: blue;
+  font-size: 1.5rem;
+}
+hr {
+  border: 2px solid green;
 }
 .noprint {
   visibility: hidden !important;
@@ -22,21 +26,9 @@ textarea {
   overflow: hidden;
   width: 100%;
 }
-html {
-  font-size: 1rem;
+html table{
+  font-size: 1.3rem;
 }
 button  {
   visibility: hidden !important;
-}
-.w-60 {
-  width: 60%;
-}
-.w-10 {
-  width: 10%;
-}
-.w-20 {
-  width: 20%;
-}
-.w-40 {
-  width: 40%;
 }

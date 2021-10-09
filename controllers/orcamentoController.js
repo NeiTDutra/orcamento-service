@@ -1,19 +1,31 @@
 const Orcamento = require('../models/orcamento');
-const orcamentoRepository = require('../repository/orcamentoRepository');
+
 const async = require('async');
 
 
-exports.index = async (req, res, next) => {
+exports.index = (req, res, next) => {
 
-    const call = orcamentoRepository.orcamentoStatistics();
-    
-    console.log('Rev: '+call);
-    res.render('./orcamento/orcamento_index_initial',
+    async.parallel({
+
+        orcamento_count: (callback) => {
+            Orcamento.countDocuments(callback);
+        },
+        orcamento_sit_abe: (callback) => {
+            Orcamento.countDocuments({situacao:'aberto'}, callback);
+        },
+        orcamento_sit_arq: (callback) => {
+            Orcamento.countDocuments({situacao:'arquivado'}, callback);
+        }, 
+    }, function (err, call) {
+
+        if(err) { return next(err); }
+
+        res.render('./orcamento/orcamento_index_initial',
             { 
                 title: 'Estatísticas', 
                 data: call 
             });
-    // return call;
+    });
     
 };
 

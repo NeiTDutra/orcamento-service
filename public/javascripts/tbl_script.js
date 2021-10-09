@@ -117,9 +117,9 @@ function printDiv() {
     }
  
     imp.document.write('<html><head><title>orc'+nome,rua,numero,cidade+'</title>');
-    imp.document.write(cssEstilos+'</head><body>');
+    imp.document.write(cssEstilos+'</head><body><div id="ctner">');
     imp.document.write(document.getElementById('printable').innerHTML);
-    imp.document.write('</body></html>');
+    imp.document.write('</div></body></html>');
     setTimeout(function(){
         imp.print();
     },2000);

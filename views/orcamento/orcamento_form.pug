@@ -175,17 +175,17 @@ block orcamento-list
         td.w-15
           b VALOR:
         td
-          input#valor.w-50(type='text', name='valor', onkeyup="k(this)",  value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].valor) )
+          input#valor.w-50(type='text', name='valor', onkeyup="k(this)",  value=(!orcamento || !orcamento.recibo[0] ? '' : orcamento.recibo[0].valor) )
     
     table#tbl_recibo.table.tablel-sm
       tr.table-dark
         th.th8 Recebi de:
           td
-            input#nome-cliente(type='text', name='nome_cliente', value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].nome_cliente) )
+            input#nome-cliente(type='text', name='nome_cliente', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].nome_cliente) )
       tr.table-dark
         th.th8 A quantia de:
           td 
-            input#valor-escrito(type='text', name='valor_escrito', value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].valor_escrito) )
+            input#valor-escrito(type='text', name='valor_escrito', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].valor_escrito) )
     table#tbl_recibo.table.tablel-sm
       tr.table-dark
         th Referente ao(s) serviço(s) de instalação descrito(s) acima.
@@ -193,12 +193,12 @@ block orcamento-list
       tr.table-dark
         th.th8 Local e Data:
           td
-            input#data(type='text', name='local_data', value=value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].local_data) )
+            input#data(type='text', name='local_data', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].local_data) )
     table#tbl_recibo.table.tablel-sm
       tr.table-dark
         th.th6 Emitente:
           td
-            input#emitente(type='text', name='emitente', value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].emitente) )
+            input#emitente(type='text', name='emitente', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].emitente) )
         th.th6 Assinatura:
           td
             input#assinatura(type='text', name='assinatura', value="" )
@@ -206,10 +206,10 @@ block orcamento-list
       tr.table-dark
         th CPF:
           td
-            input#cpf-recibo(type='text', name='cpf_recibo', value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].cpf) )
+            input#cpf-recibo(type='text', name='cpf_recibo', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].cpf) )
         th CNPJ:
           td
-            input#cnpj-recibo(type='text', name='cnpj_recibo', value=(undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].cnpj) )
+            input#cnpj-recibo(type='text', name='cnpj_recibo', value=(undefined===orcamento || undefined===orcamento.recibo[0] ? '' : orcamento.recibo[0].cnpj) )
     br
     br
     button.btn.btn-primary.btn-sm.bshadow( type='submit' ) Salvar
