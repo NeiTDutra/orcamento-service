@@ -1,0 +1,617 @@
+extends ../orcamento/orcamento_index
+
+block rps-list
+
+  h3.pt-2.pb-2.pl-2.bg-warning #[strong #{title}]
+  hr
+
+  form( method='POST' action='' )
+
+    input(type='hidden', name='_csrf', value=csrfToken )
+
+    table#table-rps.table.table-sm.mb-3.pb-3.text-center
+        tr.table-dark
+            td.w-20.pt-5
+                img.w-30( src='/images/cifraorps.jpg', 
+                    alt='imagem', 
+                    title='Imagem')
+            td.pt-5
+                h4 Prefeitura do Municipio
+                h4 Secretaria Municipal de Finanças
+                h4 RPS - Recibo provisório de serviços
+            td.w-20 
+                b Número:
+                input#numero.form-control(type='text', 
+                    placeholder='Número (00000)', 
+                    name='numero', 
+                    size='6', 
+                    required='true', 
+                    value=(undefined===numero ? '' : numero) readonly )
+            
+                b Série:
+                input#serie.form-control(type='text', 
+                    placeholder='Série (00000)', 
+                    name='serie', 
+                    size='6', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.serie) )
+            
+                b Data/Hora:
+                input#serdataHoraie.form-control(type='text', 
+                    placeholder='Data/Hora', 
+                    name='datahora', 
+                    size='6', 
+                    required='true', 
+                    value=(undefined===data ? '' : data) readonly )
+    
+    table.table.table-sm.text-center.mb-0
+        tr 
+            td
+                b PRESTADOR DE SERVIÇO
+    
+    table.table.table-sm.text-left.pb-0
+        tr 
+            td 
+                b CPF/CNPJ:
+                input#cpfcnpj.form-control(type='text', 
+                    placeholder='cpf/cnpj (00000000000)', 
+                    name='prestadorcpfcnpj', 
+                    size='6', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                b Inscr. municipal:
+                input#inscr-municipal.form-control(type='text', 
+                    placeholder='inscr. munici. (00000000000)', 
+                    name='prestadorinscrmunicipal', 
+                    size='6', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.inscr_municipal) )
+
+    table.table.table-sm.text-left
+        tr
+            td 
+                labbel(for='nomerazao') #[b Nome/Razão]:
+                input#nomerazao.form-control(type='text', 
+                    placeholder='nome/razao', 
+                    name='prestadornomerazao', 
+                    size='6', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.nome_razao) )
+    table.table.table-sm.text-left
+        b Endereço:
+        tr
+            td 
+                input#logradouro.form-control(type='text', 
+                    placeholder='logradouro', 
+                    name='prestadorlogradouro',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#numero.form-control(type='text', 
+                    placeholder='numero', 
+                    name='prestadornumero',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#complemento.form-control(type='text', 
+                    placeholder='complemento', 
+                    name='prestadorcomplemento',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#bairro.form-control(type='text', 
+                    placeholder='bairro', 
+                    name='prestadorbairro', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-15
+                input#cep.form-control(type='text', 
+                    placeholder='cep', 
+                    name='prestadorcep',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+                        
+    table.table.table-sm.text-left
+        tr 
+            td
+                input#cidade.form-control(type='text', 
+                    placeholder='cidade', 
+                    name='prestadorcidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#uf.form-control(type='text', 
+                    placeholder='UF', 
+                    name='prestadoruf',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#email.form-control(type='text', 
+                    placeholder='email', 
+                    name='prestadoremail', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#fone.form-control(type='text', 
+                    placeholder='fone', 
+                    name='prestadorfone', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+    table.table.table-sm.text-center.mb-0
+        tr 
+            td
+                b TOMADOR DE SERVIÇO
+    
+    table.table.table-sm.text-left.pb-0
+        tr 
+            td 
+                b CPF/CNPJ:
+                input#cpfcnpj.form-control(type='text', 
+                    placeholder='cpf/cnpj (00000000000)', 
+                    name='tomadorcpfcnpj', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                b Inscr. municipal:
+                input#inscr-municipal.form-control(type='text', 
+                    placeholder='inscr. munici. (00000000000)', 
+                    name='tomadorinscrmunicipal', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.inscr_municipal) )
+
+    table.table.table-sm.text-left
+        tr
+            td 
+                labbel(for='nomerazao') #[b Nome/Razão]:
+                input#nomerazao.form-control(type='text', 
+                    placeholder='nome/razao', 
+                    name='tomadornomerazao', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.nome_razao) )
+
+    table.table.table-sm.text-left
+        b Endereço:
+        tr
+            td 
+                input#logradouro.form-control(type='text', 
+                    placeholder='logradouro', 
+                    name='tomadorlogradouro',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#numero.form-control(type='text', 
+                    placeholder='numero', 
+                    name='tomadornumero',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#complemento.form-control(type='text', 
+                    placeholder='complemento', 
+                    name='tomadorcomplemento',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#bairro.form-control(type='text', 
+                    placeholder='bairro', 
+                    name='tomadorbairro', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-15
+                input#cep.form-control(type='text', 
+                    placeholder='cep', 
+                    name='tomadorcep',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+                        
+    table.table.table-sm.text-left
+        tr 
+            td
+                input#cidade.form-control(type='text', 
+                    placeholder='cidade', 
+                    name='tomadorcidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#uf.form-control(type='text', 
+                    placeholder='UF', 
+                    name='tomadoruf',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#email.form-control(type='text', 
+                    placeholder='email', 
+                    name='tomadoremail', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#fone.form-control(type='text', 
+                    placeholder='fone', 
+                    name='tomadorfone', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+    
+    table.table.table-sm.text-center.mb-0
+        tr 
+            td
+                b CÓDIGO DO SERVIÇO/ATIVIDADE
+                        
+    table.table.table-sm.text-left
+        tr 
+            td
+                input#codservico.form-control(type='text', 
+                    placeholder='codigo do serviço', 
+                    name='tomadorcodigoservico',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+    
+    table.table.table-sm.text-center.mb-0
+        tr 
+            td
+                b DISCRIMINAÇÃO DO(S) SERVIÇO(S)
+                        
+    table.table.table-sm.text-left
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+        tr 
+            td.w-10
+                input#quantidade.form-control(type='text', 
+                    placeholder='quant.', 
+                    name='quantidade',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td
+                input#descricao.form-control(type='text', 
+                    placeholder='descrição', 
+                    name='descricao',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valorunitario.form-control(type='text', 
+                    placeholder='valor uni.', 
+                    name='valorunitario',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+            td.w-10
+                input#valortotal.form-control(type='text', 
+                    placeholder='valor total', 
+                    name='valortotal',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.endereco) )
+    
+    table.table.table-sm.text-left.pb-0
+        tr 
+            td
+                p Valor dos serviços (R$)
+                input#valorServicos.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorservicos', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor PIS (R$)
+                input#valorPis.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorpis', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor COFINS (R$)
+                input#valorCofins.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorcofins', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor IRRF (R$)
+                input#valorIrrf.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorirrf', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+        tr 
+            td
+                p Valor INSS (R$)
+                input#valorInss.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorinss', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor CSLL (R$)
+                input#valorCsll.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorcsll', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor descontos (R$)
+                input#valorDescontos.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorcodescontos', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Outros (R$)
+                input#valorOutros.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valoroutros', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+
+    table.table.table-sm.mb-0
+        tr 
+            td.text-right
+                b VALOR TOTAL DA NOTA (R$):
+            td.w-20
+                input#valorNota.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valortotalnota',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+
+    table.table.table-sm.text-left.pb-0
+        tr 
+            td
+                p Valor total NF (R$)
+                input#valorNf.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valornf', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor deduções (R$)
+                input#valorDeducoes.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valordeducoes', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Base calc. ISS (R$)
+                input#valorBIss.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valorbaseiss', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Alíquota ISS (%)
+                input#aliquotaAIss.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='aliquotaiss', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td
+                p Valor ISS (R$)
+                input#valorDeducoes.form-control.text-right(type='text', 
+                    placeholder='0.00', 
+                    name='valoraliquotaiss', 
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )
+            td.w-15
+                p ISS retido?
+                table 
+                    tr 
+                        td.text-right
+                            input#IssRetidoTrue.radio-iss(type='radio', 
+                                name='issretido', 
+                                required='true', 
+                                value='true')
+                            label.label-iss(for='IssRetidoTrue') Sim
+                        td.text-right
+                            input#IssRetidoFalse.radio-iss(type='radio', 
+                                name='issretido', 
+                                required='true', 
+                                value='false')
+                            label.label-iss(for='IssRetidoFalse') Não
+
+    table.table.table-sm.mb-0.text-center
+        tr 
+            td
+                b OUTRAS INFORMAÇÕES:
+
+    table.table.table-sm.mb-0
+        tr 
+            td.text-left.w-20
+                input#informacoes.form-control(type='textarea', 
+                    placeholder='Outras informações', 
+                    name='informacoes',
+                    required='true', 
+                    value=(undefined===rps_list ? '' : rps_list.cpf) )

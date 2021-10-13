@@ -1,0 +1,13 @@
+extends ../orcamento/orcamento_index
+
+block rps-list
+
+    script.
+        $(document).ready(function(){
+        $('table tr').click(function(){
+            window.location = $(this).data('url');
+            return false;
+            });
+        });
+
+    h3.pt-2.pb-2.pl-2.bg-warning Detalhe de RPS - #[strong #{title}]

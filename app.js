@@ -12,6 +12,7 @@ const connectDB = require('./config/db_connection');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const orcamentosRouter = require('./routes/orcamentos');
+const rpsRouter = require('./routes/enotafiscalRoutes/rpsRoutes');
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/orcamentos', orcamentosRouter);
+app.use('/rpss', rpsRouter);
 
 // api route
 //app.use('/api/v1.0/orcamentos', apiOrcamentoRouter);
@@ -65,8 +67,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.status(err.status || 500).render('error');
 });
 
 module.exports = app;

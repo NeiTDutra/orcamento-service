@@ -71,6 +71,18 @@ input, select {
   text-align: center;
   vertical-align: middle;
 }
+.radio-iss {
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: inline;
+}
+.label-iss {
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: inline;
+}
 #tbl_empr {
   width: 100%;
 }
