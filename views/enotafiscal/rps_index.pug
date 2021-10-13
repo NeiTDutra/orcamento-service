@@ -13,6 +13,7 @@ block rps-list
     h3.pt-2.pb-2.pl-2.bg-warning Lista de RPS - #[strong #{title}]
 
     each rps in rps_list
+        hr
         p #[storng Data:] #{rps.dataHora}
         p #[strong Numero:] #{rps.numero}
         p #[strong Série:] #{rps.serie}
@@ -26,3 +27,28 @@ block rps-list
             ul 
                 li cep: #{rps.prestador.endereco.cep}
                 li logradouro: #{rps.prestador.endereco.logradouro}
+                li numero: : #{rps.prestador.endereco.numero}
+                li complemento: #{rps.prestador.endereco.complemento}
+                li bairro: #{rps.prestador.endereco.bairro}
+                li cidade: #{rps.prestador.endereco.cidade}
+                li uf: #{rps.prestador.endereco.uf}
+                li fone: #{rps.prestador.endereco.fone}
+                li email: #{rps.prestador.endereco.email}
+        p #[strong Tomador:]
+        ul
+            li cpf: #{rps.tomador.cpf}
+            li cnpj: #{rps.tomador.cnpj}
+            li isnc. municipal: #{rps.tomador.inscr_municipal}
+            li nome/razão: #{rps.tomador.nome_razao}
+            li #[strong endereço:] 
+            ul 
+                li cep: #{rps.tomador.endereco.cep}
+                li logradouro: #{rps.tomador.endereco.logradouro}
+                li numero: : #{rps.tomador.endereco.numero}
+                li complemento: #{rps.tomador.endereco.complemento}
+                li bairro: #{rps.tomador.endereco.bairro}
+                li cidade: #{rps.tomador.endereco.cidade}
+                li uf: #{rps.tomador.endereco.uf}
+                li fone: #{rps.tomador.endereco.fone}
+                li email: #{rps.tomador.endereco.email}
+

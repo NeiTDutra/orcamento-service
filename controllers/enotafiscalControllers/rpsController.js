@@ -1,5 +1,6 @@
 const axios = require('axios');
 const url = 'http://localhost:7575/enotafiscal/api/v1/rps';
+const urlCreate = 'http://localhost:7575/enotafiscal/api/v1/rps/create';
 
 
 exports.rps_list = (req, res, next) => {
@@ -9,6 +10,7 @@ exports.rps_list = (req, res, next) => {
 
             const response = await axios.get(url);
 
+            console.log('RES-DATA-MESS: \n', response.data.message);
             res.render('./enotafiscal/rps_index',
                 {
                     title: 'Todas RPSs',
@@ -26,7 +28,7 @@ exports.rps_detail = (req, res, next) => {
     (async () => {
         try {
 
-            const response = await axios.get(url, req.params.id);
+            const response = await axios.get(url, req.message.id);
 
             res.render('./enotafiscal/rps_detail',
                 {
@@ -47,10 +49,12 @@ exports.rps_create_get = (req, res, next) => {
 
             const response = await axios.get(url);
             const num = response.data.message
+            console.log(num.numero);
 
             for (let re in num) {
 
-                if (undefined === re.numero) {
+                console.log(num[re]);
+                if (undefined === num[re].numero) {
 
                     var n = 1;
                 }
@@ -66,7 +70,8 @@ exports.rps_create_get = (req, res, next) => {
                 {
                     title: 'Nova RPS',
                     numero: n,
-                    data: datetime
+                    data: datetime,
+                    // csrfToken: req.csrfToken() 
                 });
         } catch (err) {
 
@@ -77,13 +82,29 @@ exports.rps_create_get = (req, res, next) => {
 
 exports.rps_create_post = (req, res, next) => {
 
+    const data = json(req.body);
+    console.log('DATA: \n', data);
+    const numero = req.body.numero;
 
-    orcamento.save(function (err) {
+    (async () => {
+        try {
 
-        if (err) { return next(err); }
+            const response = await axios.post(urlCreate, data );
 
-        res.redirect(orcamento.url);
-    });
+            res.render('./enotafiscal/rps_detail',
+                {
+                    title: 'Detalhe de RPSs',
+                    rps_list: response.data.message
+                });
+        } catch (err) {
+
+            return next(err)
+        }
+    })();
+
+    // res.json(urlCreate, data);
+
+    // res.render('rps_detail', rps.url);
 };
 
 exports.rps_update_get = (req, res, next) => {
