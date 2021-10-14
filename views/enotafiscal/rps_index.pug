@@ -19,36 +19,36 @@ block rps-list
         p #[strong Série:] #{rps.serie}
         p #[strong Prestador:]
         ul
-            li cpf: #{rps.prestador.cpf}
-            li cnpj: #{rps.prestador.cnpj}
-            li isnc. municipal: #{rps.prestador.inscr_municipal}
-            li nome/razão: #{rps.prestador.nome_razao}
+            li cpf: #{rps.prestador[0].cpf}
+            li cnpj: #{rps.prestador[0].cnpj}
+            li isnc. municipal: #{rps.prestador[0].inscr_municipal}
+            li nome/razão: #{rps.prestador[0].nome_razao}
             li #[strong endereço:] 
             ul 
-                li cep: #{rps.prestador.endereco.cep}
-                li logradouro: #{rps.prestador.endereco.logradouro}
-                li numero: : #{rps.prestador.endereco.numero}
-                li complemento: #{rps.prestador.endereco.complemento}
-                li bairro: #{rps.prestador.endereco.bairro}
-                li cidade: #{rps.prestador.endereco.cidade}
-                li uf: #{rps.prestador.endereco.uf}
-                li fone: #{rps.prestador.endereco.fone}
-                li email: #{rps.prestador.endereco.email}
+                li cep: #{rps.prestador[0].endereco[0].cep}
+                li logradouro: #{rps.prestador[0].endereco[0].logradouro}
+                li numero: : #{rps.prestador[0].endereco[0].numero}
+                li complemento: #{rps.prestador[0].endereco[0].complemento}
+                li bairro: #{rps.prestador[0].endereco[0].bairro}
+                li cidade: #{rps.prestador[0].endereco[0].cidade}
+                li uf: #{rps.prestador[0].endereco[0].uf}
+                li fone: #{rps.prestador[0].endereco[0].fone}
+                li email: #{rps.prestador[0].endereco[0].email}
         p #[strong Tomador:]
         ul
-            li cpf: #{rps.tomador.cpf}
-            li cnpj: #{rps.tomador.cnpj}
-            li isnc. municipal: #{rps.tomador.inscr_municipal}
-            li nome/razão: #{rps.tomador.nome_razao}
+            li cpf: #{rps.tomador[0].cpf}
+            li cnpj: #{rps.tomador[0].cnpj}
+            li isnc. municipal: #{rps.tomador[0].inscr_municipal}
+            li nome/razão: #{rps.tomador[0].nome_razao}
             li #[strong endereço:] 
             ul 
-                li cep: #{rps.tomador.endereco.cep}
-                li logradouro: #{rps.tomador.endereco.logradouro}
-                li numero: : #{rps.tomador.endereco.numero}
-                li complemento: #{rps.tomador.endereco.complemento}
-                li bairro: #{rps.tomador.endereco.bairro}
-                li cidade: #{rps.tomador.endereco.cidade}
-                li uf: #{rps.tomador.endereco.uf}
-                li fone: #{rps.tomador.endereco.fone}
-                li email: #{rps.tomador.endereco.email}
+                li cep: #{rps.tomador[0].endereco[0].cep}
+                li logradouro: #{rps.tomador[0].endereco[0].logradouro}
+                li numero: : #{rps.tomador[0].endereco[0].numero}
+                li complemento: #{rps.tomador[0].endereco[0].complemento}
+                li bairro: #{rps.tomador[0].endereco[0].bairro}
+                li cidade: #{rps.tomador[0].endereco[0].cidade}
+                li uf: #{rps.tomador[0].endereco[0].uf}
+                li fone: #{rps.tomador[0].endereco[0].fone}
+                li email: #{rps.tomador[0].endereco[0].email}
 

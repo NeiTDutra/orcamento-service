@@ -142,12 +142,21 @@ block orcamento-list
         br
     p
     - if(loged && loged.status==='master'){
-        button.btn.btn-sm.btn-danger.noprint.bshadow(type='button', data-toggle='modal', data-target='#Modal', onMouseUp='this.blur();') Remover
+        button.btn.btn-sm.btn-danger.noprint.bshadow(
+            type='button', 
+            data-toggle='modal', 
+            data-target='#Modal', 
+            onMouseUp='this.blur();') Remover
 
-        a.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(type='button', href=orcamento_detail.url+'/update', onMouseUp='this.blur();') Alterar
+        a.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(
+            type='button', 
+            href=orcamento_detail.url+'/update', 
+            onMouseUp='this.blur();') Alterar
     - }
 
-    button.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(onClick='printDiv();', onMouseUp='this.blur();') Imprimir
+    button.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(
+        onClick='printDiv();', 
+        onMouseUp='this.blur();') Imprimir
 
     div.modal.fade(id='Modal' role="dialog")
         div.modal-dialog

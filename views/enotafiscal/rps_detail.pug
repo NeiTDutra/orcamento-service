@@ -11,3 +11,238 @@ block rps-list
         });
 
     h3.pt-2.pb-2.pl-2.bg-warning Detalhe de RPS - #[strong #{title}]
+    div#printable.container
+        table.table.table-sm.mb-3.pb-3
+            tr.table-dark
+                td.w-20.pt-4.text-center
+                    img.w-30( src='/images/cifraorps.jpg', 
+                        alt='imagem', 
+                        title='Imagem')
+                td.pt-4.text-center
+                    h4 Prefeitura do Municipio
+                    h4 Secretaria Municipal de Finanças
+                    h4 RPS - Recibo provisório de serviços
+                td.w-30.pt-5.text-left
+                    b Número: #[b.text-danger.text-right #{undefined===rps_list ? '' : rps_list.numero}]
+                    br
+                    b Série: #[b.text-danger #{undefined===rps_list ? '' : rps_list.serie}]
+                    br
+                    b Data/Hora: #[b.text-danger #{undefined===rps_list ? '' : rps_list.dataHora}]
+
+        table.table.table-sm.text-center.mb-0
+            tr 
+                td.bg-light
+                    b PRESTADOR DE SERVIÇO
+
+        table.table.table-sm.text-left.pb-0
+            tr 
+                td 
+                    p CPF: #[b #{undefined===rps_list ? '' : rps_list.prestador[0].cpf}]
+                td 
+                    p CNPJ: #[b #{undefined===rps_list ? '' : rps_list.prestador[0].cnpj}]
+                td
+                    p Inscr. municipal: #[b #{undefined===rps_list ? '' : rps_list.prestador[0].inscr_municipal}]
+
+        table.table.table-sm.text-left
+            tr
+                td 
+                    p Nome/Razão:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].nome_razao}]
+        
+        table.table.table-sm.text-left
+            tr
+                td 
+                    p Logradouro:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].logradouro}]
+                td.w-10
+                    p Nº:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].numero}]
+                td
+                    p Complemento:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].complemento}]
+                td
+                    p Bairo:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].bairro}]
+                td.w-15
+                    p CEP:
+                    p #[b  #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].cep}]
+                            
+        table.table.table-sm.text-left
+            tr 
+                td
+                    p Cidade:
+                    p #[b  #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].cidade}]
+                td
+                    p UF:
+                    p #[b  #{undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].uf}]
+                td  
+                    p E-mail:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].email}]
+                td
+                    p Fone:
+                    p #[b #{undefined===rps_list ? '' : rps_list.prestador[0].fone}]
+        
+        table.table.table-sm.text-center.mb-0
+            tr 
+                td.bg-light
+                    b TOMADOR DE SERVIÇO
+
+        table.table.table-sm.text-left.pb-0
+            tr
+                td 
+                    p CPF: #[b #{undefined===rps_list ? '' : rps_list.tomador[0].cpf}]
+                td 
+                    p CNPJ: #[b #{undefined===rps_list ? '' : rps_list.tomador[0].cnpj}]
+                td
+                    p Inscr. municipal: #[b #{undefined===rps_list ? '' : rps_list.tomador[0].inscr_municipal}]
+
+        table.table.table-sm.text-left
+            tr
+                td 
+                    p Nome/Razão:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].nome_razao}]
+        
+        table.table.table-sm.text-left
+            tr
+                td 
+                    p Logradouro:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].logradouro}]
+                td.w-10
+                    p Nº:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].numero}]
+                td
+                    p Complemento:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].complemento}]
+                td
+                    p Bairo:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].bairro}]
+                td.w-15
+                    p CEP:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].cep}]
+                            
+        table.table.table-sm.text-left
+            tr 
+                td
+                    p Cidade:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].cidade}]
+                td
+                    p UF:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].uf}]
+                td
+                    p E-mail:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].email}]
+                td
+                    p Fone:
+                    p #[b #{undefined===rps_list ? '' : rps_list.tomador[0].fone}]
+        
+        table.table.table-sm.text-center.mb-0
+            tr 
+                td.bg-light
+                    b CÓDIGO DO SERVIÇO/ATIVIDADE
+                            
+        table.table.table-sm.text-left
+            tr 
+                td
+                    p Cod./Ativ.: #[b #{undefined===rps_list ? '' : rps_list.cod_atividade}]
+
+        table.table.table-sm.text-center.mb-0
+            tr 
+                td.bg-light
+                    b DISCRIMINAÇÃO DO(S) SERVIÇO(S)
+                            
+        table.table.table-sm.text-left
+            tr 
+                td.w-10
+                    p Quant.:
+                    p #[b #{undefined===rps_list ? '' : rps_list.discriminacao[0].quantidade}]
+                td
+                    p Descrição:
+                    p #[b #{undefined===rps_list ? '' : rps_list.discriminacao[0].descricao}]
+                td.w-10
+                    p V. uni.:
+                    p #[b #{undefined===rps_list ? '' : rps_list.discriminacao[0].valorUnitario}]
+                td.w-10
+                    p V. tot.:
+                    p #[b #{undefined===rps_list ? '' : rps_list.discriminacao[0].valorTotal}]
+
+        table.table.table-sm.pb-0
+            tr 
+                td
+                    p Valor dos serviços (R$)
+                    b.text-right #{undefined===rps_list ? '' : rps_list.valor}
+                td
+                    p Valor PIS (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].pis}
+                td
+                    p Valor COFINS (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].cofins}
+                td
+                    p Valor IRRF (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].irrf}
+            tr 
+                td
+                    p Valor INSS (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].inss}
+                td
+                    p Valor CSLL (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].csll}
+                td
+                    p Valor descontos (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].desconto}
+                td
+                    p Outros (R$)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].outras}
+
+        table.table.table-sm.mb-0
+            tr 
+                td.text-right.bg-light
+                    b VALOR TOTAL DA NOTA (R$):
+                td.w-20
+                    b #{undefined===rps_list ? '' : rps_list.valorNota}
+
+        table.table.table-sm.text-left.pb-0
+            tr 
+                td
+                    p Valor total NF (R$)
+                    b #{undefined===rps_list ? '' : rps_list.valor}
+                td
+                    p Valor deduções (R$)
+                    b #{undefined===rps_list ? '' : rps_list.deudcao}
+                td
+                    p Base calc. ISS (R$)
+                    b #{undefined===rps_list ? '' : rps_list.valor}
+                td
+                    p Alíquota ISS (%)
+                    b #{undefined===rps_list ? '' : rps_list.fisco[0].iss}
+                td
+                    p Valor ISS (R$)
+                    b #{undefined===rps_list ? '' : rps_list.valor}
+                td.w-15
+                    p ISS retido?
+                    b #{undefined===rps_list ? '' : rps_list.issRetido}
+
+        table.table.table-sm.mb-0.text-center
+            tr 
+                td.bg-light
+                    b OUTRAS INFORMAÇÕES:
+
+        table.table.table-sm.mb-0
+            tr 
+                td.text-left.w-20
+                    b #{undefined===rps_list ? '' : rps_list.outras}
+
+        br
+        br
+        button.btn.btn-primary.btn-sm.bshadow( 
+            type='submit' ) Editar
+        button.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(
+            onClick='printDiv();', 
+            onMouseUp='this.blur();') Imprimir
+        a.button.btn.btn-outline-primary.btn-sm.ml-3.bshadow( 
+            href='javascript:history.back();') Voltar
+    br
+    br
+    if errors 
+        ul
+        for error in errors
+            li!= error.msg
