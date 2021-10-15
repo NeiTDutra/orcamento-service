@@ -37,6 +37,18 @@ input, select {
 #tbl_recibo {
   width: 75%;
   margin: 0;
+} 
+.borderbottom {
+  border-bottom: 1px solid #2F4F4F;
+}
+.borderright {
+  border-right: 1px solid #2F4F4F;
+}
+.bordertop {
+  border-top: 2px solid #2F4F4F !important;
+}
+.t-border-around {
+  border: 2px solid #2F4F4F;
 }
 .t-top {
   border-top: 2px solid #2F4F4F;
@@ -122,7 +134,6 @@ input, select {
 }
 textarea {
   font-size: 1rem;
-  text-indent: 3rem;
   resize: none;
   overflow: hidden;
   width: 100%;

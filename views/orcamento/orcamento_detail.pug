@@ -51,13 +51,13 @@ block orcamento-list
         table.table.table-sm
             tbody
                 tr
-                    td#pdf-nome.w-30 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
+                    td#pdf-one.w-30 #[strong Nome: ] #{ orcamento_detail.cliente[0].nome }
                     td.w-30 #[strong Fone: ] #{ orcamento_detail.cliente[0].fone }
                     td.w-40 #[strong Email: ] #{ orcamento_detail.cliente[0].email }
                 tr
-                    td#pdf-rua.w-30 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
-                    td#pdf-numero.w-20 #[strong N°: ] #{ orcamento_detail.cliente[0].numero }
-                    td#pdf-cidade.w-50 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
+                    td#pdf-two.w-30 #[strong Rua: ] #{ orcamento_detail.cliente[0].rua }
+                    td#pdf-three.w-20 #[strong N°: ] #{ orcamento_detail.cliente[0].numero }
+                    td#pdf-four.w-50 #[strong Cidade: ] #{ orcamento_detail.cliente[0].cidade }
         hr
         h4 Serviço: 
         table.table.table-sm
@@ -155,7 +155,7 @@ block orcamento-list
     - }
 
     button.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(
-        onClick='printDiv();', 
+        onClick="printDiv('printable','orcamento');", 
         onMouseUp='this.blur();') Imprimir
 
     div.modal.fade(id='Modal' role="dialog")

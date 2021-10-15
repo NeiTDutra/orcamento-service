@@ -1,0 +1,43 @@
+extends ../enotafiscal/rps_index
+
+block rps-list
+
+    script.
+        $(document).ready(function(){
+        $('table tr').click(function(){
+            window.location = $(this).data('url');
+            return false;
+            });
+        });
+
+    h3.pt-2.pb-2.pl-2.bg-warning #[strong #{title}]
+
+    table.table
+        thead.thead-dark
+            tr
+                th(scope="col") Número
+                th(scope="col") Série
+                th(scope="col") Data/Hora
+                th(scope="col") Prestador
+                th(scope="col") Tomador
+                th(scope="col") ISS(%)
+                th(scope="col") ISS Retido?
+                th(scope="col") Valor Nota(R$)
+
+        tbody
+            each rps in rps_list
+                tr(data-url='/rpss/rps/'+rps._id, style="cursor:pointer", onmouseover="this.style.background='grey'", onmouseout="this.style.background='none'")
+                    
+                    td #{ rps.numero }
+                    td #{ rps.serie }
+                    td #{ rps.dataHora }
+                    td #{ rps.prestador[0].nome_razao }
+                    td #{ rps.tomador[0].nome_razao }
+                    td #{ rps.fisco[0].iss }
+                    td #{ rps.fisco[0].iss }
+                    td #{ rps.issRetido }
+
+            else
+                ul.list-unstyled.ml-3
+
+                    li There are no orçamentos.

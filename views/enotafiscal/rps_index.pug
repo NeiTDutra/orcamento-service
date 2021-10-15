@@ -1,54 +1,17 @@
-extends ../orcamento/orcamento_index
+extends ../layout
 
-block rps-list
+block content
 
-    script.
-        $(document).ready(function(){
-        $('table tr').click(function(){
-            window.location = $(this).data('url');
-            return false;
-            });
-        });
+    div.col-sm-10
 
-    h3.pt-2.pb-2.pl-2.bg-warning Lista de RPS - #[strong #{title}]
+        div.mb-5.ml-3.mr-3.p-3.bshadow
 
-    each rps in rps_list
-        hr
-        p #[storng Data:] #{rps.dataHora}
-        p #[strong Numero:] #{rps.numero}
-        p #[strong Série:] #{rps.serie}
-        p #[strong Prestador:]
-        ul
-            li cpf: #{rps.prestador[0].cpf}
-            li cnpj: #{rps.prestador[0].cnpj}
-            li isnc. municipal: #{rps.prestador[0].inscr_municipal}
-            li nome/razão: #{rps.prestador[0].nome_razao}
-            li #[strong endereço:] 
-            ul 
-                li cep: #{rps.prestador[0].endereco[0].cep}
-                li logradouro: #{rps.prestador[0].endereco[0].logradouro}
-                li numero: : #{rps.prestador[0].endereco[0].numero}
-                li complemento: #{rps.prestador[0].endereco[0].complemento}
-                li bairro: #{rps.prestador[0].endereco[0].bairro}
-                li cidade: #{rps.prestador[0].endereco[0].cidade}
-                li uf: #{rps.prestador[0].endereco[0].uf}
-                li fone: #{rps.prestador[0].endereco[0].fone}
-                li email: #{rps.prestador[0].endereco[0].email}
-        p #[strong Tomador:]
-        ul
-            li cpf: #{rps.tomador[0].cpf}
-            li cnpj: #{rps.tomador[0].cnpj}
-            li isnc. municipal: #{rps.tomador[0].inscr_municipal}
-            li nome/razão: #{rps.tomador[0].nome_razao}
-            li #[strong endereço:] 
-            ul 
-                li cep: #{rps.tomador[0].endereco[0].cep}
-                li logradouro: #{rps.tomador[0].endereco[0].logradouro}
-                li numero: : #{rps.tomador[0].endereco[0].numero}
-                li complemento: #{rps.tomador[0].endereco[0].complemento}
-                li bairro: #{rps.tomador[0].endereco[0].bairro}
-                li cidade: #{rps.tomador[0].endereco[0].cidade}
-                li uf: #{rps.tomador[0].endereco[0].uf}
-                li fone: #{rps.tomador[0].endereco[0].fone}
-                li email: #{rps.tomador[0].endereco[0].email}
+            include rps_menu.pug
+    
+            block rps-list
 
+                h3.pt-2.pb-2.pl-2.bg-warning #[strong #{title}]
+
+                img.w-30( src='/images/cifraorps.jpg', 
+                    alt='imagem', 
+                    title='Imagem')

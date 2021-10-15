@@ -1,6 +1,10 @@
-#ctner {
+#ctner-orc {
   background-color: blue;
   font-size: 1.5rem;
+}
+#ctner-rps {
+  background-color: aqua;
+  font-size: 0.5rem;
 }
 hr {
   border: 2px solid green;
@@ -27,7 +31,7 @@ textarea {
   width: 100%;
 }
 html table{
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 button  {
   visibility: hidden !important;

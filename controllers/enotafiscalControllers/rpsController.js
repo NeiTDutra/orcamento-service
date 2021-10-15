@@ -1,7 +1,14 @@
 const axios = require('axios');
 const url = 'http://localhost:7575/enotafiscal/api/v1/rps/';
 const urlCreate = 'http://localhost:7575/enotafiscal/api/v1/rps/create';
+const urlUpdate = 'http://localhost:7575/enotafiscal/api/v1/rps/update/';
 
+exports.rps_index = (req, res, next) => {
+
+    res.render('./enotafiscal/rps_index', {
+        title: 'RPS Home'
+    });
+};
 
 exports.rps_list = (req, res, next) => {
 
@@ -11,7 +18,7 @@ exports.rps_list = (req, res, next) => {
             const response = await axios.get(url);
 
             console.log('RES-DATA-MESS: \n', response.data.message);
-            res.render('./enotafiscal/rps_index',
+            res.render('./enotafiscal/rps_list',
                 {
                     title: 'Todas RPSs',
                     rps_list: response.data.message
@@ -29,12 +36,14 @@ exports.rps_detail = (req, res, next) => {
         try {
 
             const response = await axios.get(url+req.params.id);
-            console.log('DETAIL: \n', response.data);
+            console.log(response.data.message);
+            const retido = response.data.message.issRetido === true ? 'Sim' : 'Não'
 
             res.render('./enotafiscal/rps_detail',
                 {
                     title: 'Detalhe de RPSs',
-                    rps_list: response.data.message
+                    rps_list: response.data.message,
+                    issRetido: retido
                 });
         } catch (err) {
 
@@ -46,14 +55,12 @@ exports.rps_detail = (req, res, next) => {
 exports.rps_create_get = (req, res, next) => {
 
     var n = 0;
-    var anterior = 0;
 
     (async () => {
         try {
 
             const response = await axios.get(url);
             const num = response.data.message;
-            console.log('NUM: \n',typeof(num),num);
 
             if(num == '') {
                 n = 1;
@@ -65,8 +72,8 @@ exports.rps_create_get = (req, res, next) => {
 
                     console.log('RE: ',re);
 
-                        n ++;
-                    }
+                    n ++;
+                }
                 n ++;
             }
 
@@ -109,103 +116,65 @@ exports.rps_create_post = (req, res, next) => {
 
 exports.rps_update_get = (req, res, next) => {
 
-    Orcamento.findById(req.params.id, function (err, orcamento) {
+    const rpsId = req.params.id;
 
-        if (err) { return next(err); }
+    (async () => {
+        try {
 
-        if (orcamento == null) {
+            const response = await axios.get(url+rpsId);
+            const rps = response.data.message;
+            console.log('RPS UPDATE:\n',rps);
 
-            var err = new Error('Orçamento not found');
-            err.status = 404;
-            return next(err);
+            var datetime = new Date();
+            res.render('./enotafiscal/rps_form',
+                {
+                    title: 'Alterar RPS',
+                    data: datetime,
+                    rps_list: rps
+                    // csrfToken: req.csrfToken() 
+                });
+        } catch (err) {
+
+            return next(err)
         }
-        res.render('./orcamento/orcamento_form',
-            {
-                title: 'Orçamento',
-                orcamento: orcamento,
-                csrfToken: req.csrfToken()
-            });
-    });
+    })();
 };
 
 exports.rps_update_post = (req, res, next) => {
+    
+    const dataBody = req.body;
+    console.log('DATA: \n', urlUpdate+dataBody.id, dataBody);
 
-    let now = new Date();
-    let dia = now.getDate();
-    let mes = now.getMonth() + 1;
-    let ano = now.getFullYear();
-    var ultima = dia + '/' + mes + '/' + ano;
-    var data = req.body.data.substr(0, 10).split('-').reverse().join('/');
-    var orcamento =
-    {
-        numero: req.body.numero,
-        data: data,
-        ultima_atualizacao: ultima,
-        situacao: req.body.situacao,
-        empresa: [
-            {
-                nome: req.body.empresa_nome,
-                cnpj: req.body.empresa_cnpj,
-                fone: req.body.empresa_fone
-            },
-        ],
-        cliente: [
-            {
-                nome: req.body.cliente_nome,
-                rua: req.body.cliente_rua,
-                numero: req.body.cliente_numero,
-                cidade: req.body.cliente_cidade,
-                email: req.body.cliente_email,
-                fone: req.body.cliente_fone
-            },
-        ],
-        servico: [
-            {
-                quantidade: req.body.servico_quantidade,
-                descricao: req.body.servico_descricao,
-                v_unitario: req.body.servico_v_unitario,
-                v_total: req.body.servico_v_total
-            },
-        ],
-        material: [
-            {
-                quantidade: req.body.material_quantidade,
-                descricao: req.body.material_descricao,
-                v_unitario: req.body.material_v_unitario,
-                v_total: req.body.material_v_total
-            },
-        ],
-        v_t_servico: req.body.v_t_servico,
-        v_t_material: req.body.v_t_material,
-        v_t_orcamento: req.body.v_t_orcamento,
-        obs: req.body.obs,
-        recibo: [
-            {
-                local_data: req.body.local_data,
-                nome_cliente: req.body.nome_cliente,
-                valor: req.body.valor,
-                valor_escrito: req.body.valor_escrito,
-                emitente: req.body.emitente,
-                cpf: req.body.cpf_recibo,
-                cnpj: req.body.cnpj_recibo
-            }
-        ]
-    };
+    (async () => {
+        try {
 
-    Orcamento.findByIdAndUpdate(req.params.id, orcamento, {}, function (err, orcamento) {
+            const response = await axios.put(urlUpdate+dataBody.id, dataBody );
 
-        if (err) { return next(err); }
+            res.render('./enotafiscal/rps_detail',
+                {
+                    title: 'Detalhe de RPSs',
+                    rps_list: response.data
+                });
+        } catch (err) {
 
-        res.redirect(orcamento.url);
-    });
+            return next(err)
+        }
+    })();
 };
 
 exports.rps_delete_post = (req, res, next) => {
 
-    Orcamento.findByIdAndRemove(req.body.orcamento_id, function (err) {
+    const idDelete = req.params.id;
+    (async () => {
+        try {
 
-        if (err) { return next(err); }
+            const response = await axios.delete(url+idDelete);
 
-        res.redirect('/orcamentos/orcamentos');
-    });
+            res.redirect('/rpss/rps');
+            
+        } catch (err) {
+
+            return next(err)
+        }
+    })();
 };
