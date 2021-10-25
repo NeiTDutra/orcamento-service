@@ -266,29 +266,25 @@ block rps-list
                         rows='5', 
                         placeholder='quant.', 
                         name='discr-quantidade',
-                        required='true', 
-                        value=(undefined===rps_list ? '' : rps_list.discriminacao[0].quantidade) )
+                        required='true') #{undefined===rps_list ? '' : rps_list.discriminacao[0].quantidade}
                 td
                     textarea#discrDescricao.form-control( 
                         rows="5",
                         placeholder='descrição', 
                         name='discr-descricao',
-                        required='true', 
-                        value=(undefined===rps_list ? '' : rps_list.discriminacao[0].descricao) )
+                        required='true') #{undefined===rps_list ? '' : rps_list.discriminacao[0].descricao}
                 td.w-10
                     textarea#discrValorunitario.form-control(
                         rows='5', 
                         placeholder='valor uni.', 
                         name='discr-valor-unitario',
-                        required='true', 
-                        value=(undefined===rps_list ? '' : rps_list.discriminacao[0].valorUnitario) )
+                        required='true') #{undefined===rps_list ? '' : rps_list.discriminacao[0].valorUnitario}
                 td.w-10
                     textarea#discrValortotal.form-control(
                         rows='5', 
                         placeholder='valor total', 
                         name='discr-valor-total',
-                        required='true', 
-                        value=(undefined===rps_list ? '' : rps_list.discriminacao[0].valorTotal) )
+                        required='true') #{undefined===rps_list ? '' : rps_list.discriminacao[0].valorTotal}
 
         table.table.table-sm.text-left.pb-0
             tr 

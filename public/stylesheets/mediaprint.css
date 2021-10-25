@@ -6,6 +6,9 @@
   background-color: aqua;
   font-size: 0.5rem;
 }
+#rps-print-id {
+  color: gray !important;
+}
 hr {
   border: 2px solid green;
 }

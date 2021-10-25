@@ -11,8 +11,6 @@ router.get('/rps/create', rpsController.rps_create_get);
 
 router.post('/rps/create', rpsController.rps_create_post);
 
-router.get('/rps/created', rpsController.rps_detail);
-
 router.get('/rps/:id/update', rpsController.rps_update_get);
 
 router.post('/rps/:id/update', rpsController.rps_update_post);

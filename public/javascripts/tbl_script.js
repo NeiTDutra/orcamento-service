@@ -104,10 +104,11 @@ function pegarDataAtual(){
 
 function printDiv(id, doc) {
 
-    let one, two, three, four, sizeFont = '';
+    let zero, one, two, three, four, sizeFont = '';
 
     if(doc === 'orcamento') {
 
+        zero = 'orç';
         one = document.getElementById('pdf-one').textContent.substr(5, 20).split(' ').join('');
         two = document.getElementById('pdf-two').textContent.substr(4, 20).split(' ').join(''); 
         three = document.getElementById('pdf-three').textContent.substr(3, 10).split(' ').join('');
@@ -116,6 +117,7 @@ function printDiv(id, doc) {
     }
     else if(doc === 'rps') {
 
+        zero = 'rps';
         one = document.getElementById('pdf-one').textContent;
         two = document.getElementById('pdf-two').textContent; 
         three = document.getElementById('pdf-three').textContent;
@@ -132,7 +134,7 @@ function printDiv(id, doc) {
        cssEstilos += '<link rel="stylesheet" href="'+cSs[x].href+'">';
     }
  
-    imp.document.write('<html><head><title>orc'+one,two,three,four+'</title>');
+    imp.document.write('<html><head><title>'+zero+'-'+one+'-'+two+'-'+three+'-'+four+'</title>');
     imp.document.write(cssEstilos+'</head><body><div id="'+sizeFont+'">');
     imp.document.write(document.getElementById(id).innerHTML);
     imp.document.write('</div></body></html>');

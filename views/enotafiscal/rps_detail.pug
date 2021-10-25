@@ -2,14 +2,6 @@ extends ../enotafiscal/rps_index
 
 block rps-list
 
-    script.
-        $(document).ready(function(){
-        $('table tr').click(function(){
-            window.location = $(this).data('url');
-            return false;
-            });
-        });
-
     h3.pt-2.pb-2.pl-2.bg-warning Detalhe de RPS - #[strong #{title}]
     div#printable.container
         table.table.table-sm.mb-3.pb-3
@@ -18,17 +10,18 @@ block rps-list
                     img.w-30( src='/images/cifraorps.jpg', 
                         alt='imagem', 
                         title='Imagem')
-                    p #{rps_list._id}
                 td.pt-4.text-center
                     h4 Prefeitura do Municipio
                     h4 Secretaria Municipal de Finanças
                     h4 RPS - Recibo provisório de serviços
-                td.w-30.pt-5.text-left
+                td.w-30.pt-4.text-left
                     b Número: #[b#pdf-one.text-danger.text-right #{undefined===rps_list ? '' : rps_list.numero}]
                     br
                     b Série: #[b#pdf-two.text-danger #{undefined===rps_list ? '' : rps_list.serie}]
                     br
                     b Data/Hora: #[b#pdf-three.text-danger #{undefined===rps_list ? '' : rps_list.dataHora}]
+                    br
+                    b#rps-print-id #{rps_list._id}
 
         table.table.table-sm.text-center
             tr 

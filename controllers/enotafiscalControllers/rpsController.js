@@ -105,7 +105,7 @@ exports.rps_create_post = (req, res, next) => {
             res.render('./enotafiscal/rps_detail',
                 {
                     title: 'Detalhe de RPSs',
-                    rps_list: response.data
+                    rps_list: response.data.message
                 });
         } catch (err) {
 
@@ -150,10 +150,12 @@ exports.rps_update_post = (req, res, next) => {
 
             const response = await axios.put(urlUpdate+dataBody.id, dataBody );
 
+            console.log('REQ JSON: ', response.data.message);
+
             res.render('./enotafiscal/rps_detail',
                 {
                     title: 'Detalhe de RPSs',
-                    rps_list: response.data
+                    rps_list: response.data.message
                 });
         } catch (err) {
 
