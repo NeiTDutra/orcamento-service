@@ -55,3 +55,9 @@ Como não pode se tornar obsoleto, o sistema está sempre sendo atualizado para 
 suas funcionalidades. Através de feedbacks dos utilizadores e constante análise e
 desenvolvimento, melhorias e correções são adicionadas periódicamente para manter por
 longo período sua vida útil e funcional.
+
+### :construction: EM DESENVOLVIMENTO :construction:
+
+Este projeto está sob implementação de nova funcionalidade: desenvolvimento e integração com API de geração de RPS (Recibo Provisório de Serviços)
+
+:rocket: [Saber mais...](https://github.com/NeiTDutra/e-notafiscal-api)
