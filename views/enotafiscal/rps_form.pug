@@ -47,7 +47,7 @@ block rps-list
                 td
                     b PRESTADOR DE SERVIÇO
 
-        table.table.table-sm.text-left.pb-0
+        table.table.table-sm.text-left.p-0.m-0.t-top-form
             tr 
                 td 
                     b CPF:
@@ -71,7 +71,7 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.prestador[0].inscr_municipal) )
 
-        table.table.table-sm.text-left
+        table.table.table-sm.text-left.t-body-form.p-0.m-0
             tr
                 td 
                     labbel(for='nomerazaoPrestador') #[b Nome/Razão]:
@@ -80,8 +80,10 @@ block rps-list
                         name='nome-razao-prestador', 
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.prestador[0].nome_razao) )
-        table.table.table-sm.text-left
-            b Endereço:
+        table.table.table-sm.text-left.t-body-form.p-0.m-0
+            tr 
+                td 
+                    b Endereço:
             tr
                 td 
                     input#logradouroPrestador.form-control(type='text', 
@@ -114,7 +116,7 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.prestador[0].endereco[0].cep) )
                             
-        table.table.table-sm.text-left
+        table.table.table-sm.text-left.t-bottom-form.p-0.m-0
             tr 
                 td
                     input#cidadePrestador.form-control(type='text', 
@@ -145,7 +147,7 @@ block rps-list
                 td
                     b TOMADOR DE SERVIÇO
 
-        table.table.table-sm.text-left.pb-0
+        table.table.table-sm.text-left.p-0.m-0.t-top-form
             tr
                 td 
                     b CPF:
@@ -169,7 +171,7 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.tomador[0].inscr_municipal) )
 
-        table.table.table-sm.text-left
+        table.table.table-sm.text-left.t-body-form.p-0.m-0
             tr
                 td 
                     labbel(for='nomerazaoTomador') #[b Nome/Razão]:
@@ -179,8 +181,10 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.tomador[0].nome_razao) )
 
-        table.table.table-sm.text-left
-            b Endereço:
+        table.table.table-sm.text-left.t-body-form.p-0.m-0
+            tr 
+                td 
+                    b Endereço:
             tr
                 td 
                     input#logradouroTomador.form-control(type='text', 
@@ -213,7 +217,7 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.tomador[0].endereco[0].cep) )
                             
-        table.table.table-sm.text-left
+        table.table.table-sm.text-left.t-bottom-form.p-0.m-0
             tr 
                 td
                     input#cidadeTomador.form-control(type='text', 
@@ -245,7 +249,7 @@ block rps-list
                 td
                     b CÓDIGO DO SERVIÇO/ATIVIDADE
                             
-        table.table.table-sm.text-left
+        table.table.table-sm.text-left.t-border-form.p-0.m-0
             tr 
                 td
                     input#codAtividade.form-control(type='text', 
@@ -259,7 +263,7 @@ block rps-list
                 td
                     b DISCRIMINAÇÃO DO(S) SERVIÇO(S)
                             
-        table.table.table-sm.text-left
+        table.table.table-sm.text-left.t-top-form.p-0.m-0
             tr 
                 td.w-10
                     textarea#discrQuantidade.form-control(
@@ -286,7 +290,7 @@ block rps-list
                         name='discr-valor-total',
                         required='true') #{undefined===rps_list ? '' : rps_list.discriminacao[0].valorTotal}
 
-        table.table.table-sm.text-left.pb-0
+        table.table.table-sm.text-left.pb-0.t-bottom-form.p-0.m-0
             tr 
                 td
                     p Valor dos serviços (R$)
@@ -346,7 +350,7 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.fisco[0].outras) )
 
-        table.table.table-sm.mb-0
+        table.table.table-sm.mt-2.mb-2.t-border-form
             tr 
                 td.text-right
                     b VALOR TOTAL DA NOTA (R$):
@@ -357,7 +361,7 @@ block rps-list
                         required='true', 
                         value=(undefined===rps_list ? '' : rps_list.valorNota) )
 
-        table.table.table-sm.text-left.pb-0
+        table.table.table-sm.text-left.p-0.m-0.t-border-form
             tr 
                 td
                     p Valor total NF (R$)
@@ -418,7 +422,7 @@ block rps-list
                 td
                     b OUTRAS INFORMAÇÕES:
 
-        table.table.table-sm.mb-0
+        table.table.table-sm.mb-0.t-border-form
             tr 
                 td.text-left.w-20
                     input#informacoes.form-control(type='textarea', 

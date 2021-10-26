@@ -7,18 +7,18 @@ const auth = require('../../controllers/authController');
 /* GET users listing. */
 router.get('/', rpsController.rps_index);
 
-router.get('/rps/create', rpsController.rps_create_get);
+router.get('/rps/create', auth.IsAuthenticated, rpsController.rps_create_get);
 
-router.post('/rps/create', rpsController.rps_create_post);
+router.post('/rps/create', auth.IsAuthenticated, rpsController.rps_create_post);
 
-router.get('/rps/:id/update', rpsController.rps_update_get);
+router.get('/rps/:id/update', auth.IsAuthenticated, rpsController.rps_update_get);
 
-router.post('/rps/:id/update', rpsController.rps_update_post);
+router.post('/rps/:id/update', auth.IsAuthenticated, rpsController.rps_update_post);
 
-router.post('/rps/:id/delete', rpsController.rps_delete_post);
+router.post('/rps/:id/delete', auth.IsAuthenticated, rpsController.rps_delete_post);
 
-router.get('/rps/:id', rpsController.rps_detail);
+router.get('/rps/:id', auth.IsAuthenticated, rpsController.rps_detail);
 
-router.get('/rps', rpsController.rps_list);
+router.get('/rps', auth.IsAuthenticated, rpsController.rps_list);
 
 module.exports = router;

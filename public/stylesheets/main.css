@@ -50,6 +50,25 @@ input, select {
 .t-border-around {
   border: 2px solid #2F4F4F;
 }
+
+.t-top-form {
+  border-top: 2px solid #2F4F4F;
+  border-left: 2px solid #2F4F4F;
+  border-right: 2px solid #2F4F4F;
+}
+.t-body-form {
+  border-left: 2px solid #2F4F4F;
+  border-right: 2px solid #2F4F4F;
+}
+.t-bottom-form {
+  border-bottom: 2px solid #2F4F4F;
+  border-left: 2px solid #2F4F4F;
+  border-right: 2px solid #2F4F4F;
+}
+.t-border-form {
+  border: 2px solid #2F4F4F;
+}
+
 .t-top {
   border-top: 2px solid #2F4F4F;
   border-left: 2px solid #2F4F4F;

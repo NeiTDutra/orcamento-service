@@ -52,9 +52,6 @@ app.use('/users', usersRouter);
 app.use('/orcamentos', orcamentosRouter);
 app.use('/rpss', rpsRouter);
 
-// api route
-//app.use('/api/v1.0/orcamentos', apiOrcamentoRouter);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
