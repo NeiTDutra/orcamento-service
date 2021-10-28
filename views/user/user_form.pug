@@ -28,6 +28,7 @@ block user-list
             option(default) #{ undefined===user ? 'Selecione um status' : user.status }
             option(value='master') master
             option(value='slave') slave
+            option(value='tester') tester
     hr
     button.btn.btn-primary.btn-sm.bshadow( type='submit' ) Salvar
     a.btn.btn-primary.btn-sm.ml-3.bshadow( type='button', href='javascript:history.back();' ) Cancelar
