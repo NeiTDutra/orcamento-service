@@ -39,6 +39,18 @@ const SubMaterial = new Schema (
     }
 );
 
+const SubRecibo = new Schema (
+    {
+        local_data: { type: String },
+        nome_cliente: { type: String },
+        valor: { type: String },
+        valor_escrito: { type: String },
+        emitente: { type: String },
+        cpf: { type: String },
+        cnpj: { type: String }
+    }
+);
+
 const OrcamentoSchema = new Schema (
     {
         numero: { type: Number },
@@ -49,6 +61,7 @@ const OrcamentoSchema = new Schema (
         cliente: [ SubCliente ],
         servico: [ SubServico ],
         material: [ SubMaterial ],
+        recibo: [ SubRecibo ],
         v_t_servico: { type: String },
         v_t_material: { type: String },
         v_t_orcamento: { type: String },

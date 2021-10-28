@@ -1,4 +1,5 @@
 const Orcamento = require('../models/orcamento');
+
 const async = require('async');
 
 
@@ -15,16 +16,17 @@ exports.index = (req, res, next) => {
         orcamento_sit_arq: (callback) => {
             Orcamento.countDocuments({situacao:'arquivado'}, callback);
         }, 
-    }, function (err, results) {
+    }, function (err, call) {
 
-            if(err) { return next(err); }
+        if(err) { return next(err); }
 
-            res.render('./orcamento/orcamento_index_initial',
-                { 
-                    title: 'Estatísticas', 
-                    data: results 
-                });
+        res.render('./orcamento/orcamento_index_initial',
+            { 
+                title: 'Estatísticas', 
+                data: call 
+            });
     });
+    
 };
 
 exports.orcamento_list = (req, res, next) => {
@@ -193,7 +195,18 @@ exports.orcamento_create_post = (req, res, next) => {
         v_t_servico: req.body.v_t_servico,
         v_t_material: req.body.v_t_material,
         v_t_orcamento: req.body.v_t_orcamento,
-        obs: req.body.obs
+        obs: req.body.obs,
+        recibo: [
+            {
+                local_data: req.body.local_data,
+                nome_cliente: req.body.nome_cliente,
+                valor: req.body.valor,
+                valor_escrito: req.body.valor_escrito,
+                emitente: req.body.emitente,
+                cpf: req.body.cpf_recibo,
+                cnpj: req.body.cnpj_recibo
+            }
+        ]
         }
     );
     orcamento.save( function (err) {
@@ -275,7 +288,18 @@ exports.orcamento_update_post = (req, res, next) => {
         v_t_servico: req.body.v_t_servico,
         v_t_material: req.body.v_t_material,
         v_t_orcamento: req.body.v_t_orcamento,
-        obs: req.body.obs
+        obs: req.body.obs,
+        recibo: [
+            {
+                local_data: req.body.local_data,
+                nome_cliente: req.body.nome_cliente,
+                valor: req.body.valor,
+                valor_escrito: req.body.valor_escrito,
+                emitente: req.body.emitente,
+                cpf: req.body.cpf_recibo,
+                cnpj: req.body.cnpj_recibo
+            }
+        ]
         };
 
     Orcamento.findByIdAndUpdate(req.params.id, orcamento, {}, function (err, orcamento) {

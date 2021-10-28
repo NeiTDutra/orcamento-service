@@ -4,3 +4,4 @@ package-lock.json
 api*
 config.env
 changes.txt
+models/notaFiscal.json

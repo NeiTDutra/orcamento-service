@@ -104,6 +104,10 @@ function pegarDataAtual(){
 
 function printDiv() {
 
+    var nome = document.getElementById('pdf-nome').textContent.substr(5, 20).split(' ').join('');
+    var rua = document.getElementById('pdf-rua').textContent.substr(4, 20).split(' ').join(''); 
+    var numero = document.getElementById('pdf-numero').textContent.substr(3, 10).split(' ').join('');
+    var cidade = document.getElementById('pdf-cidade').textContent.substr(7, 20).split(' ').join('');
     var cssEstilos = '';
     var imp = window.open('', 'width='+window.innerWidth+', height='+window.innerHeight);
  
@@ -112,10 +116,10 @@ function printDiv() {
        cssEstilos += '<link rel="stylesheet" href="'+cSs[x].href+'">';
     }
  
-    imp.document.write('<html><head><title>' + document.title  + '</title>');
-    imp.document.write(cssEstilos+'</head><body>');
+    imp.document.write('<html><head><title>orc'+nome,rua,numero,cidade+'</title>');
+    imp.document.write(cssEstilos+'</head><body><div id="ctner">');
     imp.document.write(document.getElementById('printable').innerHTML);
-    imp.document.write('</body></html>');
+    imp.document.write('</div></body></html>');
     setTimeout(function(){
         imp.print();
     },2000);
