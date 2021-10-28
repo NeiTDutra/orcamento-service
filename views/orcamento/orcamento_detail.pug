@@ -143,7 +143,8 @@ block orcamento-list
     p
     - if(loged && loged.status==='master'){
         button.btn.btn-sm.btn-danger.noprint.bshadow(type='button', data-toggle='modal', data-target='#Modal', onMouseUp='this.blur();') Remover
-
+    - }
+    - if((loged && loged.status==='master') || (loged && loged.status==='tester')){
         a.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(type='button', href=orcamento_detail.url+'/update', onMouseUp='this.blur();') Alterar
     - }
 
