@@ -14,8 +14,8 @@ Projeto sob os termos da licença [MIT](https://github.com/NeiTDutra/orcamento-s
 Online em <https://norcamentos.herokuapp.com/>
 Para acessar e testar use:
 
-- *nome:* user
-- *senha:* user@2020
+- *nome de usuário:* Tester
+- *senha:* tester#2021
 
 ## Tecnologias
 
