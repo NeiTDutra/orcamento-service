@@ -24,7 +24,7 @@ a.btn.btn-sm.btn-primary.ml-3.bshadow( href='/orcamentos/orcamentos',
                                        onMouseUp='this.blur();' ) 
     | #[strong Todos orçamentos]
 
-- if(loged && (loged.status==='master' || loged.status==='slave' || loged.status==='google' || loged.status==='facebook')){
+- if(loged){
     a.btn.btn-sm.btn-primary.ml-3.bshadow( href='/orcamentos/orcamento/create', 
                                            onMouseUp='this.blur();' ) 
         | #[strong Novo orçamento]
