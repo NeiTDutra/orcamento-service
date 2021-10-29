@@ -147,7 +147,8 @@ block orcamento-list
             data-toggle='modal', 
             data-target='#Modal', 
             onMouseUp='this.blur();') Remover
-
+    - }
+    - if((loged && loged.status==='master') || (loged && loged.status==='tester')){
         a.btn.btn-sm.btn-primary.ml-3.noprint.bshadow(
             type='button', 
             href=orcamento_detail.url+'/update', 

@@ -151,7 +151,7 @@ exports.rps_update_post = (req, res, next) => {
     })();
 };
 
-exports.rps_delete_post = (req, res, next) => {
+exports.rps_delete = (req, res, next) => {
 
     const idDelete = req.params.id;
     (async () => {

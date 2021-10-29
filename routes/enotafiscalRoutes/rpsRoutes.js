@@ -15,7 +15,7 @@ router.get('/rps/:id/update', auth.IsAuthenticated, rpsController.rps_update_get
 
 router.post('/rps/:id/update', auth.IsAuthenticated, rpsController.rps_update_post);
 
-router.post('/rps/:id/delete', auth.IsAuthenticated, rpsController.rps_delete_post);
+router.delete('/rps/:id/delete', auth.IsAuthenticated, rpsController.rps_delete);
 
 router.get('/rps/:id', auth.IsAuthenticated, rpsController.rps_detail);
 
