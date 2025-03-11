@@ -1,7 +1,7 @@
 const axios = require('axios');
-const url = process.env.RPS_URL || 'http://localhost:7575/enotafiscal/api/v1/rps/';
-const urlCreate = process.env.RPS_URL_CREATE || 'http://localhost:7575/enotafiscal/api/v1/rps/create';
-const urlUpdate = process.env.RPS_URL_UPDATE || 'http://localhost:7575/enotafiscal/api/v1/rps/update/';
+const url = 'https://e-notafiscal-api.herokuapp.com/enotafiscal/api/v1/rps'; // process.env.RPS_URL;
+const urlCreate = 'https://e-notafiscal-api.herokuapp.com/enotafiscal/api/v1/rps/create'; // process.env.RPS_URL_CREATE;
+const urlUpdate = 'https://e-notafiscal-api.herokuapp.com/enotafiscal/api/v1/rps/update/'; // process.env.RPS_URL_UPDATE;
 
 exports.rps_index = (req, res, next) => {
 
