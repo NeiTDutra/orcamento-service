@@ -21,14 +21,14 @@ router.post( '/user/:id/update', auth.parseForm, auth.csrfProtection, auth.IsAut
 router.get('/userlogin', auth.csrfProtection, user_controller.user_login_get);
 
 // Login with google account - passport-google-oauth
-router.get('/userloging', user_controller.user_login_get_google);
+// router.get('/userloging', user_controller.user_login_get_google);
 
-router.get('/userloging/callback', user_controller.user_login_get_google_callback);
+// router.get('/userloging/callback', user_controller.user_login_get_google_callback);
 
 // Login with facebook accout - passport-facebook
-router.get('/userloginf', user_controller.user_login_get_facebook);
+// router.get('/userloginf', user_controller.user_login_get_facebook);
 
-router.get('/userloginf/callback', user_controller.user_login_get_facebook_callback);
+// router.get('/userloginf/callback', user_controller.user_login_get_facebook_callback);
 
 // Login with local account - passport-local
 router.post('/userlogin', auth.parseForm, auth.csrfProtection, user_controller.user_login_post);

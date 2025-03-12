@@ -5,3 +5,4 @@ api*
 config.env
 changes.txt
 models/notaFiscal.json
+.env

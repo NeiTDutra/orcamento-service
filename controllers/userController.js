@@ -2,9 +2,9 @@ const User = require('../models/user');
 const async = require('async');
 
 const passport = require('../config/passport');
-const passportG = require('../config/passportGoogle');
-const passportF = require('../config/passportFacebook');
-const userSocial = require('../models/userSocial');
+// const passportG = require('../config/passportGoogle');
+// const passportF = require('../config/passportFacebook');
+// const userSocial = require('../models/userSocial');
 
 
 exports.user_create_get = (req, res, next) => {
@@ -121,6 +121,7 @@ exports.user_login_get = function(req, res, next) {
 }; 
 
 // Login with google routes
+/**
 exports.user_login_get_google = [
 
     passportG.authenticate('google', { 
@@ -157,6 +158,7 @@ exports.user_login_get_facebook_callback = [
             res.redirect('/orcamentos');
         }
 ];
+*/
 
 // Login with local route
 exports.user_login_post = [

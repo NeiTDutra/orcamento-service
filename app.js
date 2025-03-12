@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const dotenv = require('dotenv');
-dotenv.config({path: path.join(__dirname, './config.env')});
+dotenv.config({path: path.join(__dirname, './.env')});
 
 const connectDB = require('./config/db_connection');
 
